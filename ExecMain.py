@@ -5,10 +5,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         uic.loadUi("ThePlaceToBet.ui", self)
-        self.actionPrueba.mouse.triggered(hola)
+        self.actionPrueba.triggered.connect(self.hola)
 
 
-def hola():
+def hola(self):
     print "Hola mundo"
 
 
