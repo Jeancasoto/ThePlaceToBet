@@ -54,6 +54,19 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>240</y>
+       <width>261</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="contenedor_izq" native="true">
     <property name="geometry">
