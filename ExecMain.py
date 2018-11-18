@@ -6,9 +6,14 @@ class Ui_MainWindow(QtGui.QMainWindow):
         QtGui.QMainWindow.__init__(self)
         uic.loadUi("ThePlaceToBet.ui", self)
         self.actionPrueba.triggered.connect(self.hola)
+        self.actionPrueba2.triggered.connect(self.adios)
+
 
     def hola(self):
         print 'Hola'
+
+    def adios(self):
+        print 'adios'
 
 
 if __name__ == "__main__":
