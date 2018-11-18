@@ -8,7 +8,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionPrueba.triggered.connect(self.hola)
 
     def hola(self):
-    print 'Hola'
+        print 'Hola'
 
 
 if __name__ == "__main__":
