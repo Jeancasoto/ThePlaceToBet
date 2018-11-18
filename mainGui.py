@@ -72,6 +72,8 @@ class Ui_MainWindow(object):
         self.menuUser.addAction(self.actionExit)
         self.menubar.addAction(self.menuUser.menuAction())
 
+        #################################################
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
