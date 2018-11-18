@@ -37,12 +37,12 @@ class Ui_MainWindow(object):
         self.label.setObjectName(_fromUtf8("label"))
         self.contenedor_der = QtGui.QWidget(self.centralwidget)
         self.contenedor_der.setEnabled(True)
-        self.contenedor_der.setGeometry(QtCore.QRect(270, 0, 551, 591))
+        self.contenedor_der.setGeometry(QtCore.QRect(240, 0, 581, 591))
         self.contenedor_der.setMouseTracking(False)
         self.contenedor_der.setAutoFillBackground(False)
         self.contenedor_der.setObjectName(_fromUtf8("contenedor_der"))
         self.contenedor_izq = QtGui.QWidget(self.centralwidget)
-        self.contenedor_izq.setGeometry(QtCore.QRect(0, 0, 261, 591))
+        self.contenedor_izq.setGeometry(QtCore.QRect(0, 0, 221, 591))
         self.contenedor_izq.setAutoFillBackground(False)
         self.contenedor_izq.setObjectName(_fromUtf8("contenedor_izq"))
         MainWindow.setCentralWidget(self.centralwidget)
@@ -66,13 +66,14 @@ class Ui_MainWindow(object):
         self.actionManage_Team.setObjectName(_fromUtf8("actionManage_Team"))
         self.actionExit = QtGui.QAction(MainWindow)
         self.actionExit.setObjectName(_fromUtf8("actionExit"))
+        self.actionPrueba = QtGui.QAction(MainWindow)
+        self.actionPrueba.setObjectName(_fromUtf8("actionPrueba"))
         self.menuAdministrador.addAction(self.actionCrear_Persona)
         self.menuUser.addAction(self.menuAdministrador.menuAction())
         self.menuUser.addAction(self.actionManage_Team)
         self.menuUser.addAction(self.actionExit)
+        self.menuUser.addAction(self.actionPrueba)
         self.menubar.addAction(self.menuUser.menuAction())
-
-        #################################################
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -85,6 +86,7 @@ class Ui_MainWindow(object):
         self.actionCrear_Equipo.setText(_translate("MainWindow", "Crear Equipo", None))
         self.actionManage_Team.setText(_translate("MainWindow", "Manage Team", None))
         self.actionExit.setText(_translate("MainWindow", "Exit ", None))
+        self.actionPrueba.setText(_translate("MainWindow", "prueba", None))
 
 
 if __name__ == "__main__":
