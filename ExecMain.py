@@ -7,7 +7,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         uic.loadUi("ThePlaceToBet.ui", self)
         self.actionPrueba.triggered.connect(self.hola)
 
-def hola(self):
+    def hola(self):
     print 'Hola'
 
 
