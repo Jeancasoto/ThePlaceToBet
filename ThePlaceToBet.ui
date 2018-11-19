@@ -90,12 +90,10 @@
       <string>Administrador</string>
      </property>
      <addaction name="actionCrear_Persona"/>
+     <addaction name="actionManage_team"/>
     </widget>
     <addaction name="menuAdministrador"/>
-    <addaction name="actionManage_Team"/>
     <addaction name="actionExit"/>
-    <addaction name="actionPrueba"/>
-    <addaction name="actionPrueba2"/>
    </widget>
    <addaction name="menuUser"/>
   </widget>
@@ -128,6 +126,11 @@
   <action name="actionPrueba2">
    <property name="text">
     <string>prueba2</string>
+   </property>
+  </action>
+  <action name="actionManage_team">
+   <property name="text">
+    <string>Manage team</string>
    </property>
   </action>
  </widget>
