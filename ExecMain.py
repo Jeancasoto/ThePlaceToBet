@@ -14,11 +14,11 @@ class Ui_MainWindow(QtGui.QMainWindow):
         #self.nd.show()
         print 'alv perro'
     def menu_salir(self):
-        app = QtGui.QApplication(sys.argv)
         Dialog = QtGui.QDialog()
         ui = Ui_Dialog()
         ui.setupUi(Dialog)
         Dialog.show()
+        Dialog.exec_()
         #sys.exit()
         #print 'Salir del sistema exitoso'
     
