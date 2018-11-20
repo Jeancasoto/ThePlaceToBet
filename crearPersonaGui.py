@@ -7,10 +7,10 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-from couchdb.mapping import Document, TextField, IntegerField, Mapping
-from couchdb.mapping import DictField, ViewField, BooleanField, ListField
-from couchdb import Server
-import couchdb
+#from couchdb.mapping import Document, TextField, IntegerField, Mapping
+#from couchdb.mapping import DictField, ViewField, BooleanField, ListField
+#from couchdb import Server
+#import couchdb
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
