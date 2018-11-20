@@ -30,6 +30,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 self.menu_crear_persona.setEnabled
                 self.menu_manage_team.setEnabled
                 print 'deberia haberlos desbloqueado'
+                
 
 
     
