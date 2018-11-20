@@ -26,9 +26,9 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.resize(353, 491)
-        self.pushButton = QtGui.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(130, 440, 121, 31))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.boton_login = QtGui.QPushButton(Dialog)
+        self.boton_login.setGeometry(QtCore.QRect(130, 440, 121, 31))
+        self.boton_login.setObjectName(_fromUtf8("boton_login"))
         self.lineEdit = QtGui.QLineEdit(Dialog)
         self.lineEdit.setGeometry(QtCore.QRect(140, 320, 161, 29))
         self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
@@ -63,11 +63,10 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-    
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
-        self.pushButton.setText(_translate("Dialog", "Log In", None))
+        self.boton_login.setText(_translate("Dialog", "Log In", None))
         self.label_2.setText(_translate("Dialog", "Usuario", None))
         self.label_3.setText(_translate("Dialog", "Password", None))
 
