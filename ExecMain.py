@@ -1,8 +1,8 @@
 import sys
 #from couchdb.mapping import Document, TextField, IntegerField, Mapping
 #from couchdb.mapping import DictField, ViewField, BooleanField, ListField
-from couchdb import Server
-import couchdb
+#from couchdb import Server
+#import couchdb
 from PyQt4 import QtCore, QtGui, uic
 from crearPersonaGui import Ui_Dialog
 

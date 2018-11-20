@@ -147,7 +147,7 @@ class Ui_Dialog(object):
         print(rol)
         print(peso)
 
-        serverCDB = Server()
+        """serverCDB = Server()
         db = serverCDB['quinelas']
 
         if ( db[identidad] is None ):
@@ -165,6 +165,7 @@ class Ui_Dialog(object):
         else:
             print("Ya existe una persona con ese ID")
         #-----faltaria hacer el insert aqui-----
+        """
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
