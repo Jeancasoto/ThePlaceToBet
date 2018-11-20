@@ -5,6 +5,7 @@ import sys
 #import couchdb
 from PyQt4 import QtCore, QtGui, uic
 from crearPersonaGui import Ui_Dialog
+from loginAdmin import Ui_Dialog
 
 class Ui_MainWindow(QtGui.QMainWindow):
 
@@ -25,7 +26,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         ui.setupUi(Dialog)
         Dialog.show()
         Dialog.exec_()
-        print ('Debe exec el dialog de crear persona')  
+        print ('Debe exec el dialog de login admin')  
     #Metodo al accionar el boton de exit
     def menu_salir(self):
         sys.exit()
@@ -39,6 +40,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         Dialog.exec_()
         print ('Debe exec el dialog de crear persona')
 
+    #metodo para agregar personas (ahora en crearPersonaGui.py)    
     """
     def recuperarPersona(self):
         fechaN = self.fecha_nacimiento.date()
