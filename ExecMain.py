@@ -13,7 +13,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         #self.nd.show()
         print 'alv perro'
     def menu_salir(self):
-        QCoreApplication.exit(0)
+        sys.exit()
         print 'deberia'
     
 #class Plugin:
