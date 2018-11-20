@@ -23,14 +23,14 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     #Metodo que desbloquea las opciones del admin
     def button_login(self):
-        if username = 'admin':
+        if username == 'admin':
             print 'Username coincide'
-            if password = 'admin':
+            if password == 'admin':
                 print 'password coincide'
                 self.menu_crear_persona.setEnabled
                 self.menu_manage_team.setEnabled
                 print 'deberia haberlos desbloqueado'
-                
+
 
 
     
