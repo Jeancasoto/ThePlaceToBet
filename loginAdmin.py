@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'loginAdmin.ui'
 #
-# Created by: PyQt4 UI code generator 4.12.1
+# Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -29,12 +29,12 @@ class Ui_Dialog(object):
         self.boton_login = QtGui.QPushButton(Dialog)
         self.boton_login.setGeometry(QtCore.QRect(130, 440, 121, 31))
         self.boton_login.setObjectName(_fromUtf8("boton_login"))
-        self.lineEdit = QtGui.QLineEdit(Dialog)
-        self.lineEdit.setGeometry(QtCore.QRect(140, 320, 161, 29))
-        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
-        self.lineEdit_2 = QtGui.QLineEdit(Dialog)
-        self.lineEdit_2.setGeometry(QtCore.QRect(142, 370, 161, 29))
-        self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
+        self.username = QtGui.QLineEdit(Dialog)
+        self.username.setGeometry(QtCore.QRect(140, 320, 161, 29))
+        self.username.setObjectName(_fromUtf8("username"))
+        self.password = QtGui.QLineEdit(Dialog)
+        self.password.setGeometry(QtCore.QRect(142, 370, 161, 29))
+        self.password.setObjectName(_fromUtf8("password"))
         self.label_2 = QtGui.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(50, 330, 61, 21))
         font = QtGui.QFont()
