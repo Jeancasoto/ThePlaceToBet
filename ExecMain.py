@@ -18,7 +18,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         ui = Ui_Dialog()
         ui.setupUi(Dialog)
         Dialog.show()
-        sys.exit(app.exec_())
+        #sys.exit(app.exec_())
         #sys.exit()
         #print 'Salir del sistema exitoso'
     
