@@ -19,7 +19,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         #Llamar metodo para exec dialog log in as admin
         self.log_in_as_admin.triggered.connect(self.log_in_admin)
         
-        
+
     #Metodo que manda a llamar el dialog de login as admin
     def log_in_admin(self):
         Dialog = QtGui.QDialog()
@@ -27,7 +27,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         ui.setupUi(Dialog)
         Dialog.show()
         Dialog.exec_()
-        print ('Debe exec el dialog de login admin')  
+        print ('Debio exec el dialog de login admin')  
     #Metodo al accionar el boton de exit
     def menu_salir(self):
         sys.exit()
