@@ -13,8 +13,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
         #self.nd.show()
         print 'alv perro'
     def menu_salir(self):
-        sys.exit()
-        print 'Salir del sistema exitoso'
+        ui = CrearPersona()
+        ui.show()
+        self.close()
+        sys.exit(ui.exec_())
+        #sys.exit()
+        #print 'Salir del sistema exitoso'
     
 #class Plugin:
 #    def __init__(self, iface):
