@@ -75,9 +75,9 @@ class Ui_Dialog(object):
             print 'Username coincide'
             if input_password == ("admin"):
                 print 'password coincide'
-                self.menu_crear_persona.setEnabled
-                self.menu_manage_team.setEnabled
-                print 'deberia haberlos desbloqueado'
+                #self.menu_crear_persona.setEnabled
+                #self.menu_manage_team.setEnabled
+                print 'deberia llamar al metodo para desbloquearlos'
             else:
                 print 'No coincide password'
         else:
