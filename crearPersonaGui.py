@@ -2,11 +2,15 @@
 
 # Form implementation generated from reading ui file 'CrearPersona.ui'
 #
-# Created by: PyQt4 UI code generator 4.11.4
+# Created by: PyQt4 UI code generator 4.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from couchdb.mapping import Document, TextField, IntegerField, Mapping
+from couchdb.mapping import DictField, ViewField, BooleanField, ListField
+from couchdb import Server
+import couchdb
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -120,8 +124,47 @@ class Ui_Dialog(object):
         self.doubleSpinBox.setGeometry(QtCore.QRect(230, 300, 161, 29))
         self.doubleSpinBox.setObjectName(_fromUtf8("doubleSpinBox"))
 
+
+        #Definido
+        self.boton_confirmar.clicked.connect(self.recuperarPersona)
+        
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def recuperarPersona(self):
+        fechaN = self.fecha_nacimiento.date()
+        fechaN = fechaN.toPyDate()
+        identidad = self.numero_dentidad.text()
+        pNombre = self.primer_nombre.text()
+        pApellido = self.primer_apellido.text()
+        rol = str(self.combo_box_desempeno.currentText())
+        peso = self.doubleSpinBox.value()
+        print(fechaN)
+        print(identidad)
+        print(pNombre)
+        print(pApellido)
+        print(rol)
+        print(peso)
+
+        serverCDB = Server()
+        db = serverCDB['quinelas']
+
+        if ( db[identidad] is None ):
+            docPersona = {
+                '_id': identidad,
+                'content': {
+                    'nombre': pNombre,
+                    'apellido': pApellido,
+                    'fechaN': fechaN.strftime('%m/%d/%Y'),
+                    'rol': rol,
+                    'peso': peso
+                }
+            }
+            db.save(docPersona)
+        else:
+            print("Ya existe una persona con ese ID")
+        #-----faltaria hacer el insert aqui-----
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
@@ -137,14 +180,4 @@ class Ui_Dialog(object):
         self.boton_cancelar.setText(_translate("Dialog", "Cancelar", None))
         self.boton_confirmar.setText(_translate("Dialog", "Confirmar", None))
         self.label_11.setText(_translate("Dialog", "Peso", None))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtGui.QApplication(sys.argv)
-    Dialog = QtGui.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
 
