@@ -1,5 +1,6 @@
 import sys
 from PyQt4 import QtCore, QtGui, uic
+from crearPersonaGui import Ui_Dialog
 
 class Ui_MainWindow(QtGui.QMainWindow):
     def __init__(self):
