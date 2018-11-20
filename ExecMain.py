@@ -22,6 +22,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print 'Salir del sistema exitoso'
     #Metodo para exec gui crear persona 
     def exec_crear_persona(self):
+        self.recuperarPersona()
         Dialog = QtGui.QDialog()
         ui = Ui_Dialog()
         ui.setupUi(Dialog)
