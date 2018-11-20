@@ -18,6 +18,20 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.menu_crear_persona.triggered.connect(self.exec_crear_persona)
         #Llamar metodo para exec dialog log in as admin
         self.log_in_as_admin.triggered.connect(self.log_in_admin)
+        #Boton que desbloquea las opciones de admin
+        self.boton_login.clicked.connect(self.button_login)
+
+    #Metodo que desbloquea las opciones del admin
+    def button_login(self):
+        if username = 'admin':
+            print 'Username coincide'
+            if password = 'admin':
+                print 'password coincide'
+                self.menu_crear_persona.setEnabled
+                self.menu_manage_team.setEnabled
+                print 'deberia haberlos desbloqueado'
+
+
     
     #Metodo que manda a llamar el dialog de login as admin
     def log_in_admin(self):
