@@ -35,6 +35,7 @@ class Ui_Dialog(object):
         self.password = QtGui.QLineEdit(Dialog)
         self.password.setGeometry(QtCore.QRect(142, 370, 161, 29))
         self.password.setObjectName(_fromUtf8("password"))
+        self.password.setEchoMode(QtGui.QLineEdit.Password)
         self.label_2 = QtGui.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(50, 330, 61, 21))
         font = QtGui.QFont()
@@ -54,7 +55,7 @@ class Ui_Dialog(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.label = QtGui.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(50, 20, 261, 261))
+        self.label.setGeometry(QtCore.QRect(50, 25, 261, 261))
         self.label.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.label.setAutoFillBackground(False)
         self.label.setText(_fromUtf8(""))
@@ -86,10 +87,10 @@ class Ui_Dialog(object):
         print 'Fin del metodo'
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
+        Dialog.setWindowTitle(_translate("Dialog", "Iniciar Sesión", None))
         self.boton_login.setText(_translate("Dialog", "Log In", None))
         self.label_2.setText(_translate("Dialog", "Usuario", None))
-        self.label_3.setText(_translate("Dialog", "Password", None))
+        self.label_3.setText(_translate("Dialog", "Contraseña", None))
 
 
 if __name__ == "__main__":

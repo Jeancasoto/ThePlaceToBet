@@ -79,13 +79,13 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.menuUser.setTitle(_translate("MainWindow", "Manage", None))
+        MainWindow.setWindowTitle(_translate("MainWindow", "The Place to Bet", None))
+        self.menuUser.setTitle(_translate("MainWindow", "Opciones", None))
         self.menuAdministrador.setTitle(_translate("MainWindow", "Administrador", None))
         self.actionCrear_Persona.setText(_translate("MainWindow", "Crear Persona ", None))
         self.actionCrear_Equipo.setText(_translate("MainWindow", "Crear Equipo", None))
         self.actionManage_Team.setText(_translate("MainWindow", "Manage Team", None))
-        self.actionExit.setText(_translate("MainWindow", "Exit ", None))
+        self.actionExit.setText(_translate("MainWindow", "Salir", None))
         self.actionPrueba.setText(_translate("MainWindow", "prueba", None))
 
 

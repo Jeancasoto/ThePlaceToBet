@@ -168,7 +168,7 @@ class Ui_Dialog(object):
         """
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
+        Dialog.setWindowTitle(_translate("Dialog", "Agregar persona", None))
         self.label_2.setText(_translate("Dialog", "Numero de identidad ", None))
         self.label_3.setText(_translate("Dialog", "Fecha de nacimiento ", None))
         self.label_4.setText(_translate("Dialog", "Primer Nombre", None))

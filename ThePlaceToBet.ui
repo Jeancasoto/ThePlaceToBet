@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>The Place to Bet</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -80,7 +80,7 @@
    </property>
    <widget class="QMenu" name="menuUser">
     <property name="title">
-     <string>Manage</string>
+     <string>Opciones</string>
     </property>
     <property name="separatorsCollapsible">
      <bool>false</bool>
@@ -114,12 +114,12 @@
   </action>
   <action name="actionManage_Team">
    <property name="text">
-    <string>Manage Team</string>
+    <string>Administrar Equipo</string>
    </property>
   </action>
   <action name="menu_exit">
    <property name="text">
-    <string>Exit </string>
+    <string>Salir</string>
    </property>
   </action>
   <action name="actionPrueba">
@@ -137,12 +137,12 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Manage team</string>
+    <string>Manejar Equipo</string>
    </property>
   </action>
   <action name="log_in_as_admin">
    <property name="text">
-    <string>Log in </string>
+    <string>Iniciar Sesion</string>
    </property>
   </action>
  </widget>
