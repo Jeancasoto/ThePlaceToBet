@@ -63,10 +63,10 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+    """
         #Boton que desbloquea las opciones de admin
         self.boton_login.clicked.connect(self.button_login)
-    """
+    
     #Metodo que desbloquea las opciones del admin
     def button_login(self):
         if username == 'admin':
