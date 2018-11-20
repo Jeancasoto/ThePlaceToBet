@@ -17,7 +17,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         d = Ui_Dialog()
         #b1 = QPushButton("ok",d)
         #b1.move(50,50)
-        d.setWindowTitle("Dialog")
+        #d.setWindowTitle("Dialog")
         d.setWindowModality(Qt.ApplicationModal)
         d.exec_()
         #sys.exit()
