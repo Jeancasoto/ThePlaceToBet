@@ -19,7 +19,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         #Llamar metodo para exec dialog log in as admin
         self.log_in_as_admin.triggered.connect(self.log_in_admin)
         #Boton que desbloquea las opciones de admin
-        loginAdmin.Ui_Dialog.__init__.boton_login.clicked.connect(self.button_login)
+        Ui_Dialog.__init__.boton_login.clicked.connect(self.button_login)
 
     #Metodo que desbloquea las opciones del admin
     def button_login(self):
