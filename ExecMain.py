@@ -10,7 +10,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.menu_exit.triggered.connect(self.menu_salir)
         #Llamar metodo para exec dialog crear persona
         self.menu_crear_persona.triggered.connect(self.exec_crear_persona)
-
+        #self.boton_confirmar.clicked.connect(self.recuperarPersona)
     #Metodo que manda a llamar el dialog
     def login(self):
         #self.nd = NewDialog(self)
@@ -28,6 +28,25 @@ class Ui_MainWindow(QtGui.QMainWindow):
         Dialog.show()
         Dialog.exec_()
         print 'Debe exec el dialog de crear persona'
+
+    def recuperarPersona(self):
+        fechaN = self.fecha_nacimiento.date()
+        fechaN = fechaN.toPyDate()
+        identidad = self.numero_identidad.text()
+        pNombre = self.primer_nombre.text()
+        pApellido = self.primer_apellido.text()
+        rol = str(self.combo_box_desempeno.currentText())
+        peso = self.doubleSpinBox.Value()
+        print(fechaN)
+        print(identidad)
+        print(pNombre)
+        print(pApellido)
+        print(rol)
+        print(peso)
+
+        #-----faltaria hacer el insert aqui-----
+
+
     
     
 #class Plugin:

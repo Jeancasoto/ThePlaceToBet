@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'CrearPersona.ui'
 #
-# Created by: PyQt4 UI code generator 4.11.4
+# Created by: PyQt4 UI code generator 4.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -81,9 +81,6 @@ class Ui_Dialog(object):
         font.setWeight(75)
         self.label_10.setFont(font)
         self.label_10.setObjectName(_fromUtf8("label_10"))
-        self.fecha_nacimiento = QtGui.QDateEdit(Dialog)
-        self.fecha_nacimiento.setGeometry(QtCore.QRect(230, 150, 151, 29))
-        self.fecha_nacimiento.setObjectName(_fromUtf8("fecha_nacimiento"))
         self.numero_dentidad = QtGui.QLineEdit(Dialog)
         self.numero_dentidad.setGeometry(QtCore.QRect(230, 100, 171, 29))
         self.numero_dentidad.setObjectName(_fromUtf8("numero_dentidad"))
@@ -119,6 +116,9 @@ class Ui_Dialog(object):
         self.doubleSpinBox = QtGui.QDoubleSpinBox(Dialog)
         self.doubleSpinBox.setGeometry(QtCore.QRect(230, 300, 161, 29))
         self.doubleSpinBox.setObjectName(_fromUtf8("doubleSpinBox"))
+        self.fecha_nacimientot = QtGui.QDateEdit(Dialog)
+        self.fecha_nacimientot.setGeometry(QtCore.QRect(230, 150, 171, 27))
+        self.fecha_nacimientot.setObjectName(_fromUtf8("fecha_nacimientot"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -130,21 +130,11 @@ class Ui_Dialog(object):
         self.label_4.setText(_translate("Dialog", "Primer Nombre", None))
         self.label_8.setText(_translate("Dialog", "Primer Apellido", None))
         self.label_10.setText(_translate("Dialog", "Se desempenara como ::", None))
-        self.fecha_nacimiento.setDisplayFormat(_translate("Dialog", "dd/mm/yyyy", None))
         self.combo_box_desempeno.setItemText(0, _translate("Dialog", "Arbitro", None))
         self.combo_box_desempeno.setItemText(1, _translate("Dialog", "Jugador", None))
         self.combo_box_desempeno.setItemText(2, _translate("Dialog", "Entrenador", None))
         self.boton_cancelar.setText(_translate("Dialog", "Cancelar", None))
         self.boton_confirmar.setText(_translate("Dialog", "Confirmar", None))
         self.label_11.setText(_translate("Dialog", "Peso", None))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtGui.QApplication(sys.argv)
-    Dialog = QtGui.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
+        self.fecha_nacimientot.setDisplayFormat(_translate("Dialog", "dd/MM/yyyy", None))
 

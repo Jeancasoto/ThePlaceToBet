@@ -26,40 +26,51 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_MainWindow(object):
-    def calculoFisico(self):
-        tempo = self.fecha.date()
-        fechaNa = tempo.toPyDate()
+    def formulaFisico(self, diasNac):
         fechaAc = datetime.datetime.now().date()
-        delta = fechaAc - fechaNa
+        delta = fechaAc - diasNac
         #print(fechaNa)
         #print(fechaAc)
         #print(delta.days)
         bioFis = 100*math.sin((math.pi*2*delta.days)/23)
         bioFis = round(bioFis,2)
         print(bioFis)
-    def calculoEmocional(self):
+
+    def calculoFisico(self):
         tempo = self.fecha.date()
         fechaNa = tempo.toPyDate()
+        self.formulaFisico(fechaNa)
+
+    def formulaEmocional(self, diasNac):
         fechaAc = datetime.datetime.now().date()
-        delta = fechaAc - fechaNa
+        delta = fechaAc - diasNac
         #print(fechaNa)
         #print(fechaAc)
         #print(delta.days)
         bioEmo = 100*math.sin((math.pi*2*delta.days)/28)
         bioEmo = round(bioEmo,2)
         print(bioEmo)
-        
-    def calculoIntelectual(self):
+    
+    def calculoEmocional(self):
         tempo = self.fecha.date()
         fechaNa = tempo.toPyDate()
+        self.formulaEmocional(fechaNa)
+        
+    def formulaIntelectual(self,diasNac):
         fechaAc = datetime.datetime.now().date()
-        delta = fechaAc - fechaNa
+        delta = fechaAc - diasNac
         #print(fechaNa)
         #print(fechaAc)
         #print(delta.days)
         bioInt = 100*math.sin((math.pi*2*delta.days)/33)
         bioInt = round(bioInt,2)
         print(bioInt)
+    
+    def calculoIntelectual(self):
+        tempo = self.fecha.date()
+        fechaNa = tempo.toPyDate()
+        self.formulaIntelectual(fechaNa)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(800, 600)
