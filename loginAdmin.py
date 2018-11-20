@@ -77,7 +77,7 @@ class Ui_Dialog(object):
                 print 'deberia haberlos desbloqueado'
             else:
                 print 'No coincide password'
-        else
+        else:
             print'No coincide username'
 
         print 'Fin del metodo'
