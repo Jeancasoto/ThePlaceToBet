@@ -139,6 +139,19 @@
     <string>Se desempenara como ::</string>
    </property>
   </widget>
+  <widget class="QDateEdit" name="fecha_nacimiento">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>150</y>
+     <width>151</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="displayFormat">
+    <string>dd/mm/yyyy</string>
+   </property>
+  </widget>
   <widget class="QLineEdit" name="numero_dentidad">
    <property name="geometry">
     <rect>
@@ -255,19 +268,6 @@
      <width>161</width>
      <height>29</height>
     </rect>
-   </property>
-  </widget>
-  <widget class="QDateEdit" name="fecha_nacimientot">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>150</y>
-     <width>171</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="displayFormat">
-    <string>dd/MM/yyyy</string>
    </property>
   </widget>
  </widget>
