@@ -63,7 +63,18 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        #Boton que desbloquea las opciones de admin
+        self.boton_login.clicked.connect(self.button_login)
+    
+    #Metodo que desbloquea las opciones del admin
+    def button_login(self):
+        if self.username == 'admin':
+            print 'Username coincide'
+            if self.password == 'admin':
+                print 'password coincide'
+                self.menu_crear_persona.setEnabled
+                self.menu_manage_team.setEnabled
+                print 'deberia haberlos desbloqueado'
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
         self.boton_login.setText(_translate("Dialog", "Log In", None))
