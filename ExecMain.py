@@ -13,14 +13,19 @@ class Ui_MainWindow(QtGui.QMainWindow):
         #self.nd = NewDialog(self)
         #self.nd.show()
         print 'alv perro'
+    #Metodo al accionar el boton de exit
     def menu_salir(self):
+        sys.exit()
+        print 'Salir del sistema exitoso'
+    #Metodo para exec gui crear persona 
+    def exec_crear_persona(self):
         Dialog = QtGui.QDialog()
         ui = Ui_Dialog()
         ui.setupUi(Dialog)
         Dialog.show()
         Dialog.exec_()
-        #sys.exit()
-        #print 'Salir del sistema exitoso'
+        print 'Debe exec el dialog de crear persona'
+    
     
 #class Plugin:
 #    def __init__(self, iface):
