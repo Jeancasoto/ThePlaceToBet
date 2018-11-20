@@ -70,9 +70,10 @@ class Ui_Dialog(object):
     def button_login(self):
         input_username = self.username
         input_password = self.password
-        if input_username == 'admin':
+        print 'username=', input_username
+        if input_username == ("admin"):
             print 'Username coincide'
-            if input_password == 'admin':
+            if input_password == ("admin"):
                 print 'password coincide'
                 self.menu_crear_persona.setEnabled
                 self.menu_manage_team.setEnabled
