@@ -14,7 +14,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print 'alv perro'
     def menu_salir(self):
         sys.exit()
-        print 'deberia'
+        print 'Salir del sistema exitoso'
     
 #class Plugin:
 #    def __init__(self, iface):
