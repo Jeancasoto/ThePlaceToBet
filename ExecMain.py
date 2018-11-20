@@ -6,8 +6,11 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         uic.loadUi("ThePlaceToBet.ui", self)
-        #Llamar a la ventana que muestra un login para el admin
+        #Llamar metodo para salir del sistema
         self.menu_exit.triggered.connect(self.menu_salir)
+        #Llamar metodo para exec dialog crear persona
+        self.menu_crear_persona.triggered.connect(self.exec_crear_persona)
+
     #Metodo que manda a llamar el dialog
     def login(self):
         #self.nd = NewDialog(self)
