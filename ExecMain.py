@@ -46,8 +46,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
         #-----faltaria hacer el insert aqui-----
 
-
-    
+    def prueba(self):
+        print("byeee")    
     
 #class Plugin:
 #    def __init__(self, iface):
