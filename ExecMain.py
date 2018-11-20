@@ -13,9 +13,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
         #self.nd.show()
         print 'alv perro'
     def menu_salir(self):
-        d = QDialog()
+        d = Ui_Dialog()
         #b1 = QPushButton("ok",d)
-        b1.move(50,50)
+        #b1.move(50,50)
         d.setWindowTitle("Dialog")
         d.setWindowModality(Qt.ApplicationModal)
         d.exec_()
