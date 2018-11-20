@@ -68,9 +68,11 @@ class Ui_Dialog(object):
     
     #Metodo que desbloquea las opciones del admin
     def button_login(self):
-        if username == 'admin':
+        input_username = self.username
+        input_password = self.password
+        if input_username == 'admin':
             print 'Username coincide'
-            if password == 'admin':
+            if input_password == 'admin':
                 print 'password coincide'
                 self.menu_crear_persona.setEnabled
                 self.menu_manage_team.setEnabled
