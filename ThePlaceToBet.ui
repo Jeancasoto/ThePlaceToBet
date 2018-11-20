@@ -85,22 +85,20 @@
     <property name="separatorsCollapsible">
      <bool>false</bool>
     </property>
-    <widget class="QMenu" name="menuAdministrador">
+    <widget class="QMenu" name="menu_admin">
      <property name="title">
       <string>Administrador</string>
      </property>
-     <addaction name="actionCrear_Persona"/>
+     <addaction name="menu_crear_persona"/>
+     <addaction name="menu_manage_team"/>
     </widget>
-    <addaction name="menuAdministrador"/>
-    <addaction name="actionManage_Team"/>
-    <addaction name="actionExit"/>
-    <addaction name="actionPrueba"/>
-    <addaction name="actionPrueba2"/>
+    <addaction name="menu_admin"/>
+    <addaction name="menu_exit"/>
    </widget>
    <addaction name="menuUser"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionCrear_Persona">
+  <action name="menu_crear_persona">
    <property name="text">
     <string>Crear Persona </string>
    </property>
@@ -115,7 +113,7 @@
     <string>Manage Team</string>
    </property>
   </action>
-  <action name="actionExit">
+  <action name="menu_exit">
    <property name="text">
     <string>Exit </string>
    </property>
@@ -128,6 +126,11 @@
   <action name="actionPrueba2">
    <property name="text">
     <string>prueba2</string>
+   </property>
+  </action>
+  <action name="menu_manage_team">
+   <property name="text">
+    <string>Manage team</string>
    </property>
   </action>
  </widget>
