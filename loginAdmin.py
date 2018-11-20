@@ -68,8 +68,8 @@ class Ui_Dialog(object):
     
     #Metodo que desbloquea las opciones del admin
     def button_login(self):
-        input_username = str(self.username)
-        input_password = str(self.password)
+        input_username = str(self.username.text())
+        input_password = str(self.password.text())
         print 'username=', input_username
         if input_username == ("admin"):
             print 'Username coincide'
