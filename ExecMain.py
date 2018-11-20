@@ -11,7 +11,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def login(self):
         #self.nd = NewDialog(self)
         #self.nd.show()
-        #print 'deberia'
+        print 'alv perro'
     def menu_salir(self):
         QCoreApplication.exit(0)
         print 'deberia'
