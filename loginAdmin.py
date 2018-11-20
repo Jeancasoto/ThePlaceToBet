@@ -68,13 +68,20 @@ class Ui_Dialog(object):
     
     #Metodo que desbloquea las opciones del admin
     def button_login(self):
-        if self.username == 'admin':
+        if username == 'admin':
             print 'Username coincide'
-            if self.password == 'admin':
+            if password == 'admin':
                 print 'password coincide'
                 self.menu_crear_persona.setEnabled
                 self.menu_manage_team.setEnabled
                 print 'deberia haberlos desbloqueado'
+            else:
+                print 'No coincide password'
+        else
+            print'No coincide username'
+
+        print 'Fin del metodo'
+
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
         self.boton_login.setText(_translate("Dialog", "Log In", None))
