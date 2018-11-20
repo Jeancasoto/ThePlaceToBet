@@ -91,6 +91,7 @@
      </property>
      <addaction name="menu_crear_persona"/>
      <addaction name="menu_manage_team"/>
+     <addaction name="log_in_as_admin"/>
     </widget>
     <addaction name="menu_admin"/>
     <addaction name="menu_exit"/>
@@ -99,6 +100,9 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="menu_crear_persona">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Crear Persona </string>
    </property>
@@ -129,8 +133,16 @@
    </property>
   </action>
   <action name="menu_manage_team">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Manage team</string>
+   </property>
+  </action>
+  <action name="log_in_as_admin">
+   <property name="text">
+    <string>Log in </string>
    </property>
   </action>
  </widget>
