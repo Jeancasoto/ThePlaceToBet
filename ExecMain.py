@@ -15,12 +15,17 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.menu_exit.triggered.connect(self.menu_salir)
         #Llamar metodo para exec dialog crear persona
         self.menu_crear_persona.triggered.connect(self.exec_crear_persona)
-        
-    #Metodo que manda a llamar el dialog
-    def login(self):
-        #self.nd = NewDialog(self)
-        #self.nd.show()
-        print ('alv perro')
+        #Llamar metodo para exec dialog log in as admin
+        self.log_in_as_admin.triggered.connect(self.log_in_admin)
+    
+    #Metodo que manda a llamar el dialog de login as admin
+    def log_in_admin(self):
+        Dialog = QtGui.QDialog()
+        ui = Ui_Dialog()
+        ui.setupUi(Dialog)
+        Dialog.show()
+        Dialog.exec_()
+        print ('Debe exec el dialog de crear persona')  
     #Metodo al accionar el boton de exit
     def menu_salir(self):
         sys.exit()
