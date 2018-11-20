@@ -9,19 +9,19 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.menu_admin.clicked.connect(self.login)
     #Metodo que manda a llamar el dialog
     def login(self):
-        self.nd = NewDialog(self)
-        self.nd.show()
+        #self.nd = NewDialog(self)
+        #self.nd.show()
         print 'deberia'
     
-class Plugin:
-    def __init__(self, iface):
-        self.dlg.button.connect(self.open_new_dialog)
+#class Plugin:
+#    def __init__(self, iface):
+#        self.dlg.button.connect(self.open_new_dialog)
 
 
 #Creacion del Dialog admin     
-class Login_as_admin(QtGui.QWidget):
-    def __init__(self, parent):
-        super(NewDialog, self).__init__(parent) 
+#class Login_as_admin(QtGui.QWidget):
+#    def __init__(self, parent):
+#        super(NewDialog, self).__init__(parent) 
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
