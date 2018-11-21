@@ -19,6 +19,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.password.setEchoMode(QtGui.QLineEdit.Password)
         self.recuperarJugadores.clicked.connect(self.listarJugadores)
         self.boton_agregar__jug_equipo.clicked.connect(self.transferirJugadores)
+        self.boton_equipo_aceptar.clicked.connect(self.insertarEquipo)
+        self.botonAgregarEquipo.clicked.connect(self.agregarListaEquipo)
+        self.botonEliminarEquipo.clicked.connect(self.quitarListaEquipo)
+        self.botonActualizarEqui.clicked.connect(self.actualizarEquiposClub)
+        self.botonAceptar.clicked.connect(self.crearClub)
+
     
     def autenticar(self):
         input_username = str(self.username.text())
@@ -81,38 +87,60 @@ class Ui_MainWindow(QtGui.QMainWindow):
             docTemp = item.value
             print(docTemp['content']['nombre'])
             temporal.append(docTemp['_id'])
+            jId = docTemp["_id"]
             jNombre = docTemp['content']['nombre']
             jApellido = docTemp['content']['apellido']
             #jFecha = docTemp['content']['fechaN']
             #jRol = docTemp['content']['rol']
             jPeso = docTemp['content']['peso']
-            listRow = jNombre+" "+jApellido+"-"+str(jPeso)
+            listRow = jId+"-"+jNombre+" "+jApellido+"-"+str(jPeso)
             self.lista_jugadores_disp.addItem(listRow)
         global listaJugadores
         listaJugadores = temporal
+        global jugadoresAgregados
+        jugadoresAgregados = []
             
     def insertarEquipo(self):
         print("INSERTAR EQUIPO")
         nEquipo = self.texto_nom_equipo.text()
+        print(nEquipo)
         nClub = "N/A"
-        nJugadores = []
+        nJugadores = jugadoresAgregados
+        
+        serverCDB = Server()
+        db = serverCDB['quinelas']
+        
+        if nEquipo not in db:
+            print("entro aqui perro")
+            docEquipo = {
+                '_id': nEquipo,
+                'content': {
+                    'club': nClub,
+                    'integrantes': nJugadores
+                }
+            }
+            db.save(docEquipo)
+            print("Agregado exitosamente!")
+        else:
+            print("Ya existe un equipo con ese ID")
+        
+
 
     def transferirJugadores(self):
         temporal = []
-        #for JugadorSelec in self.lista_jugadores_disp.selectedItems():
-        tempo = self.lista_jugadores_disp.currentItem()
-        value = tempo.text()
-        value = value.split("-")
-        temporal.append(value[0])
-        print(value[0])
-        self.lista_jugadores_disp.takeItem(tempo)
-        self.lista_jugadores_ag.addItem(tempo)
-        
+        for JugadorSelec in self.lista_jugadores_disp.selectedItems():
+            #tempo = self.lista_jugadores_disp.currentItem()
+            value = JugadorSelec.text()
+            value = value.split("-")
+            temporal.append(value[0])
+            print(value[0])    
+            self.lista_jugadores_disp.takeItem(self.lista_jugadores_disp.row(JugadorSelec))
+            self.lista_jugadores_ag.addItem(JugadorSelec)
         #jugadoresAgregados.append(self.lista_jugadores_disp.currentRow())
         global jugadoresAgregados
         jugadoresAgregados = temporal
-        for i in range(0, len(temporal)):
-            print(temporal[i])         
+        #for i in range(0, len(temporal)):
+        #    print(temporal[i])         
         #print(self.lista_jugadores_disp.currentRow())            
         
     def actualizarEquiposClub(self):
@@ -126,7 +154,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
         for equipo in equiposSinClub:
             equipo = equipo.value
-            row = equipo["content"]["nombreEquipo"]
+            row = equipo["_id"]
             print(row)
             self.listaEquiposDisp.addItem(row)
 
@@ -155,7 +183,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
             docClub = {
                 '_id': nombreClub,
                 'content': {
-                    'nombreClub': nombreClub,
                     'equipos': listaEquipos
                 }
             }

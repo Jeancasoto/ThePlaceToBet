@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <property name="documentMode">
      <bool>false</bool>
@@ -461,26 +461,6 @@
        <string>Aceptar</string>
       </property>
      </widget>
-     <widget class="QListView" name="listaEquiposSel">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>130</y>
-        <width>271</width>
-        <height>361</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QListView" name="listaEquiposDisp">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>130</y>
-        <width>271</width>
-        <height>361</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QPushButton" name="botonAgregarEquipo">
       <property name="geometry">
        <rect>
@@ -541,6 +521,26 @@
       </property>
       <property name="text">
        <string>Actualizar Equipos</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listaEquiposDisp">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>130</y>
+        <width>271</width>
+        <height>361</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listaEquiposSel">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>130</y>
+        <width>271</width>
+        <height>361</height>
+       </rect>
       </property>
      </widget>
     </widget>

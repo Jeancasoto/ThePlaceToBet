@@ -103,11 +103,11 @@ for i in range(num):
         '_id': IDs[i],
         #'_rev': '1-0000000001',
         'content': {
-                'tipo_persona': tipos_personas[i],
-                'primer_nombre': listaNombres[randint(0,len(listaNombres)-1)],
-                'primer_apellido': listaApellidos[randint(0,len(listaApellidos)-1)],
-                'fecha_nacimiento': fechas_nac[i],
-                'peso':str(randint(1, 50)/100.00)
+                'nombre': listaNombres[randint(0,len(listaNombres)-1)],
+                'apellido': listaApellidos[randint(0,len(listaApellidos)-1)],
+                'fechaN': fechas_nac[i],
+                'rol': tipos_personas[i],
+                'peso':str(randint(1, 100)/100.00)
                 }       
         }
         

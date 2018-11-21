@@ -1,9 +1,8 @@
 {
-    "_id": pene
+    "_id": "nombreEquipo"
 
     "content":{
         "club": "id_Club"
-        "nombreEquipo": "Equipo1"
         "integrantes": ["id1", "id2", "id3"]
     }
 }
