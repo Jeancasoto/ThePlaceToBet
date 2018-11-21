@@ -108,8 +108,8 @@ class Ui_Dialog(object):
             print(docTemp['content']['nombre'])
             jNombre = docTemp['content']['nombre']
             jApellido = docTemp['content']['apellido']
-            jFecha = docTemp['content']['fechaN']
-            jRol = docTemp['content']['rol']
+            #jFecha = docTemp['content']['fechaN']
+            #jRol = docTemp['content']['rol']
             jPeso = docTemp['content']['peso']
             listRow = jNombre+" "+jApellido+" - "+str(jPeso)
             self.listWidget.addItem(listRow)
