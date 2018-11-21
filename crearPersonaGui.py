@@ -7,10 +7,10 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-#from couchdb.mapping import Document, TextField, IntegerField, Mapping
-#from couchdb.mapping import DictField, ViewField, BooleanField, ListField
-#from couchdb import Server
-#import couchdb
+from couchdb.mapping import Document, TextField, IntegerField, Mapping
+from couchdb.mapping import DictField, ViewField, BooleanField, ListField
+from couchdb import Server
+import couchdb
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -132,6 +132,7 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+
     def recuperarPersona(self):
         fechaN = self.fecha_nacimiento.date()
         fechaN = fechaN.toPyDate()
@@ -147,10 +148,10 @@ class Ui_Dialog(object):
         print(rol)
         print(peso)
 
-        """serverCDB = Server()
+        serverCDB = Server()
         db = serverCDB['quinelas']
 
-        if ( db[identidad] is None ):
+        if ( identidad not in db ):
             docPersona = {
                 '_id': identidad,
                 'content': {
@@ -165,7 +166,7 @@ class Ui_Dialog(object):
         else:
             print("Ya existe una persona con ese ID")
         #-----faltaria hacer el insert aqui-----
-        """
+        
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Agregar persona", None))

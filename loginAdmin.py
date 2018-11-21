@@ -22,7 +22,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_Dialog(object):
+class Ui_Dialog_Login(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.resize(353, 491)
@@ -71,20 +71,21 @@ class Ui_Dialog(object):
     def button_login(self):
         input_username = str(self.username.text())
         input_password = str(self.password.text())
-        print 'username=', input_username
+        print ('username=', input_username)
         if input_username == ("admin"):
-            print 'Username coincide'
+            print ('Username coincide')
             if input_password == ("admin"):
-                print 'password coincide'
+                print ('password coincide')
                 #self.menu_crear_persona.setEnabled
                 #self.menu_manage_team.setEnabled
-                print 'deberia llamar al metodo para desbloquearlos'
+               
+                print ('deberia llamar al metodo para desbloquearlos')
             else:
-                print 'No coincide password'
+                print ('No coincide password')
         else:
-            print'No coincide username'
+            print('No coincide username')
 
-        print 'Fin del metodo'
+        print ('Fin del metodo')
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Iniciar Sesión", None))
@@ -97,7 +98,7 @@ if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
     Dialog = QtGui.QDialog()
-    ui = Ui_Dialog()
+    ui = Ui_Dialog_Login()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())

@@ -9,9 +9,10 @@ server = Server()
 #Crear una database
 db = server.create('theplacetobet')
 
-print 'Programa finalizado con exito'
+print ('Programa finalizado con exito')
 
-
+"""
 msg = QMessageBox()
 msg.setIcon(QMessageBox.Information)
-msg.setText("Base de datos creada con exito"
+msg.setText("Base de datos creada con exito")
+"""

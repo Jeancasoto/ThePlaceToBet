@@ -5,7 +5,7 @@ import sys
 #import couchdb
 from PyQt4 import QtCore, QtGui, uic
 from crearPersonaGui import Ui_Dialog
-from loginAdmin import Ui_Dialog
+from loginAdmin import Ui_Dialog_Login
 
 class Ui_MainWindow(QtGui.QMainWindow):
 
@@ -18,12 +18,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.menu_crear_persona.triggered.connect(self.exec_crear_persona)
         #Llamar metodo para exec dialog log in as admin
         self.log_in_as_admin.triggered.connect(self.log_in_admin)
-        
+   
 
     #Metodo que manda a llamar el dialog de login as admin
     def log_in_admin(self):
         Dialog = QtGui.QDialog()
-        ui = Ui_Dialog()
+        ui = Ui_Dialog_Login()
         ui.setupUi(Dialog)
         Dialog.show()
         Dialog.exec_()
@@ -34,7 +34,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print ('Salir del sistema exitoso')
     #Metodo para exec gui crear persona 
     def exec_crear_persona(self):
-        self.recuperarPersona()
+        #self.recuperarPersona()
         Dialog = QtGui.QDialog()
         ui = Ui_Dialog()
         ui.setupUi(Dialog)
