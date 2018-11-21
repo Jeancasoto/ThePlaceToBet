@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <property name="documentMode">
      <bool>false</bool>
@@ -397,7 +397,7 @@
     </widget>
     <widget class="QWidget" name="tab_club">
      <property name="enabled">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <attribute name="title">
       <string>Crear Club</string>
@@ -528,6 +528,19 @@
       </property>
       <property name="text">
        <string>Nombre:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="botonActualizarEqui">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>510</y>
+        <width>141</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Actualizar Equipos</string>
       </property>
      </widget>
     </widget>
@@ -829,16 +842,6 @@
        </rect>
       </property>
      </widget>
-     <widget class="QListView" name="lista_jugadores_ag">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>240</y>
-        <width>256</width>
-        <height>192</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QPushButton" name="boton_equipo_aceptar">
       <property name="geometry">
        <rect>
@@ -850,6 +853,16 @@
       </property>
       <property name="text">
        <string>Aceptar</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="lista_jugadores_ag">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>240</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
       </property>
      </widget>
     </widget>
