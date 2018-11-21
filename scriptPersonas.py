@@ -1,4 +1,5 @@
-num = int(raw_input("Cuantas personas desea crear  :"))
+#num = int(raw_input("Cuantas personas desea crear  :"))
+num = 1000
 
 from couchdb.mapping import Document, TextField, IntegerField, Mapping
 from couchdb.mapping import DictField, ViewField, BooleanField, ListField
@@ -15,10 +16,10 @@ def numeros_de_identidad(num):
         while len(lista_no_IDs)<num:
 
                 for i in range(num):
-                        print 'va por la -->', len(lista_no_IDs)
+                        print ('va por la -->'), len(lista_no_IDs)
 
                         no_ID=lista_areas[randint(0,len(lista_areas)-1)]+"-"+str(randint(1940,2000))+"-"+lista_numeros[randint(0,len(lista_numeros)-1)]+lista_numeros[randint(0,len(lista_numeros)-1)]+lista_numeros[randint(0,len(lista_numeros)-1)]+lista_numeros[randint(0,len(lista_numeros)-1)]+lista_numeros[randint(0,len(lista_numeros)-1)]
-                        print str(no_ID)
+                        print (str(no_ID))
                         if no_ID not in lista_no_IDs:
                                 lista_no_IDs.append(no_ID)
                                 print('Id agregado exitosamente')
@@ -32,10 +33,10 @@ def fechas_nacimiento(num):
         while len(lista_fechas_nac)<num:
 
                 for i in range(num):
-                        print 'va por la -->', len(lista_fechas_nac)
+                        print ('va por la -->'), len(lista_fechas_nac)
 
                         no_fecha_nac= str(randint(1,31))+"/"+str(randint(1,12))+"/"+str(randint(1940,2000))
-                        print str(no_fecha_nac)
+                        print (str(no_fecha_nac))
                         lista_fechas_nac.append(no_fecha_nac)
                         print('fecha agregada exitosamente')
                      
@@ -49,7 +50,7 @@ def definir_personas(num):
         while len(lista_personas)<num:
 
                 for i in range(num):
-                        print 'va por la -->', len(lista_personas)
+                        print ('va por la -->'), len(lista_personas)
 
                         seleccionar= randint(0,10)
                         if (seleccionar<2):
@@ -93,7 +94,10 @@ listaApellidos = ["Martinez","Lopez","Rodriguez","Hernandez","Flores","Mejia","G
 server = Server()
 
 #Crear una database
-db = server.create('test')
+db = server["quinelas"]
+
+#Referirse a una base de datos ya existente
+#db = server['quinelas']
 
 #Crear un documento
 
@@ -107,12 +111,13 @@ for i in range(num):
                 'apellido': listaApellidos[randint(0,len(listaApellidos)-1)],
                 'fechaN': fechas_nac[i],
                 'rol': tipos_personas[i],
-                'peso':str(randint(1, 100)/100.00)
+                'peso':str(randint(1, 100)/100.00),
+                'equipo':'N/A'
                 }       
         }
         
         db.save(doc)
         print('Agregado a la base de datos, EXITOSO! --> ', i)
 
-print "script finalizado con exito"
+print ("script finalizado con exito")
 
