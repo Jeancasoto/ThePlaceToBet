@@ -196,6 +196,15 @@ class Ui_MainWindow(QtGui.QMainWindow):
             row = equipo["_id"]
             print(row)
             self.listaEquiposDisp.addItem(row)
+        """
+        equiposSinClub = db.view('queries/getEquiposSinClub')
+
+        for equipo in equiposSinClub:
+            equipo = equipo.value
+            row = equipo["_id"]
+            if row.split("-")[0] == "2017"
+                print(row)
+                self.listaEquiposDisp.addItem(row)"""
 
     def agregarListaEquipo(self):
         for EquipoSelec in self.listaEquiposDisp.selectedItems():
