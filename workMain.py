@@ -44,6 +44,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.botonAgregarEquipo_2.clicked.connect(self.agregarEquiposTemporada)
         #Crear temporada
         self.botonCrearTemp.clicked.connect(self.crearTemporada)
+        #Actualizar todo de 
         
 
     #Metodo al accionar el boton de exit
@@ -604,6 +605,24 @@ class Ui_MainWindow(QtGui.QMainWindow):
                     db.save(docPartido)
 
                 contador_jornada+=1
+
+        #Metodo para cargar los años de las temporadas en el combo en Jugar
+        def cargarComboTemporadas(self):
+            serverCDB = Server()
+            db = serverCDB['quinelas']
+            #NO SE COMO SE LLAMA ESTA VIEW, NO TENGO COUCH!
+            temporadas = db.view('queries/getTemporadas')
+            #FIN DEL COMUNICADO
+            listaYrs = []
+            for temporada in temporadas:
+                docTemp = temporada.value
+                idT = docTemp["_id"]
+                listaTempo = idT.split("-")
+                idT = listaTempo[0]
+                listaYrs.append(idT)
+            self.comboBox.addItems(listaYrs)
+
+
 
 if __name__ == "__main__":
     import sys
