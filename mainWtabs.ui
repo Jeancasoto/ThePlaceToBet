@@ -27,11 +27,8 @@
      </rect>
     </property>
     <property name="currentIndex">
-<<<<<<< HEAD
      <number>5</number>
-=======
      <number>7</number>
->>>>>>> 5f15eb1d46ccb40ee2905f45f8f616cc5f55ecbd
     </property>
     <property name="documentMode">
      <bool>false</bool>
@@ -971,17 +968,10 @@
      <widget class="QPushButton" name="cargar_cbEquipos">
       <property name="geometry">
        <rect>
-<<<<<<< HEAD
-        <x>440</x>
-        <y>30</y>
-        <width>97</width>
-        <height>27</height>
-=======
         <x>520</x>
         <y>30</y>
         <width>97</width>
         <height>29</height>
->>>>>>> 5f15eb1d46ccb40ee2905f45f8f616cc5f55ecbd
        </rect>
       </property>
       <property name="text">
@@ -1606,119 +1596,6 @@
        <string>$00.00</string>
       </property>
      </widget>
-<<<<<<< HEAD
-    </widget>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Visualizar</string>
-     </attribute>
-     <widget class="QListWidget" name="listPerson">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>50</y>
-        <width>256</width>
-        <height>192</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QListWidget" name="listaEquipos">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>50</y>
-        <width>256</width>
-        <height>192</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QListWidget" name="ListaClub">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>300</y>
-        <width>256</width>
-        <height>192</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QListWidget" name="listaTemporada">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>300</y>
-        <width>256</width>
-        <height>192</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="actualizar">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>520</y>
-        <width>97</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Actualizar</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_26">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>64</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Personas</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_27">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>20</y>
-        <width>64</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Equipos</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_28">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>270</y>
-        <width>64</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Clubes</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_29">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>270</y>
-        <width>91</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Jornadas</string>
-      </property>
-     </widget>
-=======
->>>>>>> 1fc0635419e8e9e12bc7ffcb44319ce80cb9db9f
     </widget>
     <widget class="QWidget" name="tab_7">
      <attribute name="title">
