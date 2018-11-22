@@ -487,29 +487,6 @@
        <string>Equipos Disponibles</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="textNomClub">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>50</y>
-        <width>511</width>
-        <height>29</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_14">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>60</y>
-        <width>61</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Nombre:</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="botonActualizarEqui">
       <property name="geometry">
        <rect>

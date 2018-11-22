@@ -1,9 +1,13 @@
 import sys
+from random import randint
 from PyQt4 import QtCore, QtGui, uic
 from couchdb.mapping import Document, TextField, IntegerField, Mapping
 from couchdb.mapping import DictField, ViewField, BooleanField, ListField
 from couchdb import Server
 import couchdb
+import datetime
+import math
+import decimal
 
 class Ui_MainWindow(QtGui.QMainWindow):
     
@@ -170,29 +174,81 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def crearClub(self):
         print("CREAR CLUB")
-        nombreClub = self.textNomClub.text()
-
-        listaEquipos = []
-        for EquipoSelec in self.listaEquiposSel.selectedItems():
-            listaEquipos.append(EquipoSelec)
 
         serverCDB = Server()
         db = serverCDB['quinelas']
 
-        if nombreClub not in db:
-            docClub = {
-                '_id': nombreClub,
-                'content': {
-                    'equipos': listaEquipos
-                }
+        idClub = "1" + str(randint(0,9)) + str(randint(0,9)) + str(randint(0,9)) + str(randint(0,9)) + str(randint(0,9))
+
+        listaEquipos = []
+        cont = 0
+
+        items = [] 
+        for index in range(self.listaEquiposSel.count()): 
+            items.append(str(self.listaEquiposSel.item(index).text()))
+
+        for EquipoSelec in items:
+            #EquipoSelec = str(self.listaEquiposSel.item(cont))
+            listaEquipos.append(EquipoSelec)
+            docEquipo = db.get(EquipoSelec)
+            docEquipo["content"]["club"] = idClub
+            print(docEquipo)
+            db.save(docEquipo)
+            cont += 1
+
+        docClub = {
+            '_id': idClub,
+            'content': {
+                'equipos': listaEquipos
             }
-            db.save(docClub)
-            self.listaEquiposSel.clear()
-            self.listaEquiposDisp.clear()
+        }
+        db.save(docClub)
+
+        self.listaEquiposSel.clear()
+        self.listaEquiposDisp.clear()
+
+    def calcularBioritmos(self, equipoSelec):
+
+        #Este metodo calcula el bioritmo para un EQUIPO
+        #Calcula el bioritmo para cada jugador individual, los suma y saca la media ponderada
+        #Luego, saca la media de los 3 bioritmos (fis, emo, int)
+
+        """
+        A partir de aqui, necesito saber los equipos y sus jugadores para calcular su bioritmo
+        """
+        print("CALCULAR BIORITMOS")
+
+        serverCDB = Server()
+        db = serverCDB['quinelas']
+        acumPesos = 0
+        acumFisico = 0
+        acumEmo = 0
+        acumIntel = 0
+        if(equipoSelec in db):
+            doc = db[equipoSelec]
+            listaJ = []
+            #listaJ = doc["content"]["integrantes"]
+            for i in range(0,10):
+                elementoI = listaJ[i]
+                doc1 = db[elementoI]
+                fechaNac = doc1["content"]["fechaN"]
+                fechaNac = fechaNac.toPyDate()
+                fechaAct = datetime.datetime.now().date()
+                delta = fechaAct - fechaNac
+                pesoAct = doc1["content"]["peso"]
+                acumPesos += pesoAct
+                #fisico = (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
+                acumFisico += (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
+                #emocional = (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
+                acumEmo += (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
+                #intelectual = (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
+                acumIntel += (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
+            mediaF = acumFisico/acumPesos
+            mediaE = acumEmo/acumPesos
+            mediaI = acumIntel/acumPesos
+            mediaT = (mediaF+mediaE+mediaI)/3                       
         else:
-            print("El nombre de club ya existe")
-            self.listaEquiposSel.clear()
-            self.listaEquiposDisp.clear()
+            print("Ese equipo no existe o no tiene jugadores")
 
 if __name__ == "__main__":
     import sys
