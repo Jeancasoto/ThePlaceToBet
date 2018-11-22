@@ -46,7 +46,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.botonCrearTemp.clicked.connect(self.crearTemporada)
         #Actualizar combobox temporadas
         self.botonTemporadas.clicked.connect(self.cargarComboTemporadas)
-        
+        #Completar los datos de jornada en Jugar
+        self.comboBox.currentIndexChanged.connect(self.cargarComboJornada)
+        #Completar los datos de enfrentamiento en Jugar
+        self.comboBox_2.currentIndexChanged.connect(self.cargarComboEnfrentamiento)
 
     #Metodo al accionar el boton de exit
     def salir(self):
@@ -60,8 +63,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
             print ('Username encontrado')
             if  input_password == 'admin':
                 print ('Password encontrado')
-                self.Log_in_admin.setTabEnabled(1, True)
-                self.Log_in_admin.setTabEnabled(2, True)
+                self.verObjetos.setTabEnabled(1, True)
+                self.verObjetos.setTabEnabled(2, True)
             else:
                 print ('Password no encontrada')
         else:
@@ -609,11 +612,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     #Metodo para cargar los años de las temporadas en el combo en Jugar
     def cargarComboTemporadas(self):
+        self.comboBox.clear()
         serverCDB = Server()
         db = serverCDB['quinelas']
-        #NO SE COMO SE LLAMA ESTA VIEW, NO TENGO COUCH!
         temporadas = db.view('queries/getPartidas')
-        #FIN DEL COMUNICADO
         listaYrs = []
         for temporada in temporadas:
             docTemp = temporada.value
@@ -623,6 +625,60 @@ class Ui_MainWindow(QtGui.QMainWindow):
             if idT not in listaYrs:
                 listaYrs.append(idT)
         self.comboBox.addItems(listaYrs)
+
+    #Metodo para llenar cb de Jornada
+    def cargarComboJornada(self):
+        #print("HOLAAAAAAAAAAA")
+        self.comboBox_2.clear()
+        serverCDB = Server()
+        db = serverCDB["quinelas"]
+        temporadas = db.view("queries/getPartidas")
+        itemActual = str(self.comboBox.currentText())
+        listaJornadas = []
+        for temporada in temporadas:
+            docTemp = temporada.value
+            idT = docTemp["_id"]
+            listaTempo = idT.split("-")
+            idT = listaTempo[0]
+            #print(idT)
+            #print(itemActual)
+            if itemActual == idT:
+                #print("*******")
+                #print(listaTempo[1])
+                if listaTempo[1] not in listaJornadas:
+                    listaJornadas.append(listaTempo[1])
+        listHols = []
+        for i in range (0,len(listaJornadas)):
+            x = int(listaJornadas[i])
+            listHols.append(x)
+        listHols.sort()
+        listaJornadas.clear()
+        for i in range (0,len(listHols)):
+            x = str(listHols[i])
+            listaJornadas.append(x)
+        self.comboBox_2.addItems(listaJornadas)
+
+    #Metodo para cargar los enfrentamientos en el combobox
+    def cargarComboEnfrentamiento(self):
+        self.comboBox_3.clear()
+        serverCDB = Server()
+        db = serverCDB["quinelas"]
+        temporadas = db.view("queries/getPartidas")
+        jornadaActual = str(self.comboBox_2.currentText())
+        temporadaActual = str(self.comboBox.currentText())
+        listaEnfrentamientos = []
+        for temporada in temporadas:
+            docTemp = temporada.value
+            idT = docTemp["_id"]
+            listaTempo = idT.split("-")
+            idT = listaTempo[0]
+            idJ = listaTempo[1]
+            if jornadaActual == idJ and temporadaActual == idT:
+                enfren = listaTempo[2]+"-"+listaTempo[3]
+                if enfren not in listaEnfrentamientos:
+                    listaEnfrentamientos.append(enfren)
+        self.comboBox_3.addItems(listaEnfrentamientos)
+
 
 
 
