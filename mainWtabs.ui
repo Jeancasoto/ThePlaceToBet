@@ -27,8 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
-     <number>7</number>
+     <number>6</number>
     </property>
     <property name="documentMode">
      <bool>false</bool>
@@ -1594,6 +1593,32 @@
       </property>
       <property name="text">
        <string>$00.00</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="botonTemporadas">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>180</y>
+        <width>97</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cargar T</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="botonPartidos">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>230</y>
+        <width>97</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cargar P</string>
       </property>
      </widget>
     </widget>
