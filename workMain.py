@@ -6,7 +6,7 @@ from couchdb.mapping import DictField, ViewField, BooleanField, ListField
 from couchdb import Server
 import couchdb
 import datetime
-from datetime import datetime
+#from datetime import datetime
 import math
 import decimal
 
@@ -272,18 +272,24 @@ class Ui_MainWindow(QtGui.QMainWindow):
         serverCDB = Server()
         db = serverCDB['quinelas']
         docJ = db[jKey]
-        pesoJ = docJ["content"]["peso"]
+        pesoAct = float(docJ["content"]["peso"])
+        print("pesoAct: "+str(pesoAct))
         nacJ = docJ["content"]["fechaN"]
-        fechaN = datetime.strptime(nacJ, '%d/%m/%Y')
-        fechaAct = datetime.datetime.now().date()
+        fechaN = datetime.datetime.strptime(nacJ, '%d/%m/%Y')
+        fechaAct = datetime.date.today().strftime("%d/%m/%Y")
+        fechaAct = datetime.datetime.strptime(fechaAct, '%d/%m/%Y')
         delta = fechaAct - fechaN
         #fisico = (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
         acumFisico = (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
+        print("acumFisico: "+str(acumFisico))
         #emocional = (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
         acumEmo = (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
+        print("acumEmo: "+str(acumEmo))
         #intelectual = (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
         acumIntel = (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
-        mediaP = (acumFisico+acumEmo+acumIntel)/(3*peso)
+        print("acumIntel: "+str(acumIntel))
+        mediaP = (acumFisico+acumEmo+acumIntel)/(3*pesoAct)
+        print("mediaP: "+str(mediaP))
         return mediaP
 
     #Metodo que agrega los equipos al combobox en modificar
@@ -685,8 +691,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
             self.tableWidget_3.setItem(i , 0, QtGui.QTableWidgetItem(nombre))
         for i in range(0,len(jugadores)):
             docJ = db[jugadores[i]]
-            media = self.calcularBioritmos(docJ["_id"])            
-            self.tableWidget_3.setItem(i , 1, QtGui.QTableWidgetItem(round(media,2)))
+            media = self.calcularBioritmos(docJ["_id"])
+            media = round(media,2)
+            #print(media)                                          
+            self.tableWidget_3.setItem(i , 1, QtGui.QTableWidgetItem(str(media)))
         #Entrenador local
         entrenador = localDoc["entrenador"]
         entrenador = db[entrenador]
@@ -700,6 +708,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
             jugadorDoc = db[jugadores[i]]
             nombre = jugadorDoc["content"]["nombre"]+" "+jugadorDoc["content"]["apellido"]
             self.tableWidget_4.setItem(i , 0, QtGui.QTableWidgetItem(nombre))
+        for i in range(0,len(jugadores)):
+            docJ = db[jugadores[i]]
+            media = self.calcularBioritmos(docJ["_id"])
+            media = round(media,2)
+            #print(media)
+            self.tableWidget_4.setItem(i , 1, QtGui.QTableWidgetItem(str(media)))
         #Entrenador visita
         entrenador = visitDoc["entrenador"]
         entrenador = db[entrenador]
@@ -714,7 +728,78 @@ class Ui_MainWindow(QtGui.QMainWindow):
             self.tableWidget.setItem(arbitros.index(arbitro), 0, QtGui.QTableWidgetItem(nombreAr))
 
     def listarTODO(self):
-        str(self.comboBox.currentText())
+        self.list_con_datos.clear()
+
+        serverCDB = Server()
+        db = serverCDB["quinelas"]
+
+        #Toma la seleccion actual
+        objAct = self.combo_consulta.currentIndex()
+
+        print(objAct)
+
+        if objAct == 0:
+            #Listar Personas
+            personasDB = db.view("queries/getPersonas")
+            for persona in personasDB:
+                persona = persona.value
+                IDPersona = persona["_id"]
+                persona = db.get(IDPersona)
+                nombreP = persona["content"]["nombre"]
+                apellidoP = persona["content"]["apellido"]
+                fechaP = persona["content"]["fechaN"]
+                pesoP = persona["content"]["peso"]
+                self.list_con_datos.addItem("ID: " + IDPersona + " - Nombre: " + nombreP + " " + apellidoP + " - Fecha Nacimiento: " + fechaP + " - Peso: " + pesoP)
+        elif objAct == 1:
+            #Listar Jugadores
+            personasDB = db.view("queries/getJugadores")
+            for persona in personasDB:
+                persona = persona.value
+                IDPersona = persona["_id"]
+                persona = db.get(IDPersona)
+                nombreP = persona["content"]["nombre"]
+                apellidoP = persona["content"]["apellido"]
+                fechaP = persona["content"]["fechaN"]
+                pesoP = persona["content"]["peso"]
+                self.list_con_datos.addItem("ID: " + IDPersona + " - Nombre: " + nombreP + " " + apellidoP + " - Fecha Nacimiento: " + fechaP + " - Peso: " + pesoP)
+        elif objAct == 2:
+            #Listar Entrenadores
+            personasDB = db.view("queries/getEntrenador")
+            for persona in personasDB:
+                persona = persona.value
+                IDPersona = persona["_id"]
+                persona = db.get(IDPersona)
+                nombreP = persona["content"]["nombre"]
+                apellidoP = persona["content"]["apellido"]
+                fechaP = persona["content"]["fechaN"]
+                pesoP = persona["content"]["peso"]
+                self.list_con_datos.addItem("ID: " + IDPersona + " - Nombre: " + nombreP + " " + apellidoP + " - Fecha Nacimiento: " + fechaP + " - Peso: " + pesoP)
+            pass
+        elif objAct == 3:
+            #Listar Arbitros
+            personasDB = db.view("queries/getArbitros")
+            for persona in personasDB:
+                persona = persona.value
+                IDPersona = persona["_id"]
+                persona = db.get(IDPersona)
+                nombreP = persona["content"]["nombre"]
+                apellidoP = persona["content"]["apellido"]
+                fechaP = persona["content"]["fechaN"]
+                pesoP = persona["content"]["peso"]
+                self.list_con_datos.addItem("ID: " + IDPersona + " - Nombre: " + nombreP + " " + apellidoP + " - Fecha Nacimiento: " + fechaP + " - Peso: " + pesoP)
+            pass
+        elif objAct == 4:
+            #Listar Equipos
+            pass
+        elif objAct == 5:
+            #Listar Clubes
+            pass
+        elif objAct == 6:
+            #Listar Jornadas
+            pass
+        elif objAct == 7:
+            #Listar Partidos
+            pass
 
 if __name__ == "__main__":
     import sys

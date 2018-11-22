@@ -1202,7 +1202,7 @@
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>270</y>
+        <y>280</y>
         <width>81</width>
         <height>21</height>
        </rect>
@@ -1244,7 +1244,7 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>300</y>
+        <y>310</y>
         <width>231</width>
         <height>171</height>
        </rect>
@@ -1629,9 +1629,9 @@
      <widget class="QListWidget" name="list_con_datos">
       <property name="geometry">
        <rect>
-        <x>185</x>
+        <x>95</x>
         <y>120</y>
-        <width>401</width>
+        <width>591</width>
         <height>391</height>
        </rect>
       </property>
