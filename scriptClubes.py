@@ -55,6 +55,21 @@ docClub = {
 }
 """
 
+        def push_clubes_to_database(num):
+                for i in range(num):
+                #Crear un documento
+                doc = {
+                        '_id': lista_alfa[i],
+                        #'_rev': '1-0000000001',
+                        'equipos': []
+                }
+                db.save(doc)
+                print ("Agregado exitoso de club a la base de datos")
+            
+get_alfanumeric = generar_alfanumerico(num)
+
+ejec = push_clubes_to_database(num)
+"""
         def push_clubes_to_database(self):
                 #Crear un documento
                 doc = {
@@ -63,7 +78,7 @@ docClub = {
                         'equipos': []
                 }
                 db.save(doc)
-
+"""
         def push_to_database(self):
                 
                 #Crear un documento

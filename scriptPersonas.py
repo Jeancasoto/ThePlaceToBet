@@ -94,7 +94,7 @@ listaApellidos = ["Martinez","Lopez","Rodriguez","Hernandez","Flores","Mejia","G
 server = Server()
 
 #Crear una database
-db = server["quinelas"]
+db = server.create('test')
 
 #Referirse a una base de datos ya existente
 #db = server['quinelas']
