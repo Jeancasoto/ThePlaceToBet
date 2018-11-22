@@ -612,7 +612,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
                 contador_jornada+=1
 
-    #Metodo para cargar los años de las temporadas en el combo en Jugar
+    """#Metodo para cargar los años de las temporadas en el combo en Jugar"""
     def cargarComboTemporadas(self):
         self.comboBox.clear()
         serverCDB = Server()
