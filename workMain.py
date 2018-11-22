@@ -6,6 +6,7 @@ from couchdb.mapping import DictField, ViewField, BooleanField, ListField
 from couchdb import Server
 import couchdb
 import datetime
+from datetime import datetime
 import math
 import decimal
 
@@ -52,6 +53,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.comboBox_2.currentIndexChanged.connect(self.cargarComboEnfrentamiento)
         #Cargar los datos de arbitros, coaches y jugadores
         self.botonPartidos.clicked.connect(self.cargarDatosPartido)
+        #Cargar todo para visualizar :v
+        self.combo_consulta.currentIndexChanged.connect(self.listarTODO)
 
     #Metodo al accionar el boton de exit
     def salir(self):
@@ -259,49 +262,29 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.listaEquiposDisp.clear()
 
     #Metodo para calcular el bioritmo promedio para un equipo
-    def calcularBioritmos(self, equipoSelec):
+    def calcularBioritmos(self, jKey):
 
         #Este metodo calcula el bioritmo para un EQUIPO
         #Calcula el bioritmo para cada jugador individual, los suma y saca la media ponderada
         #Luego, saca la media de los 3 bioritmos (fis, emo, int)
 
-        """
-        A partir de aqui, necesito saber los equipos y sus jugadores para calcular su bioritmo
-        """
         print("CALCULAR BIORITMOS")
-
         serverCDB = Server()
         db = serverCDB['quinelas']
-        acumPesos = 0
-        acumFisico = 0
-        acumEmo = 0
-        acumIntel = 0
-        if(equipoSelec in db):
-            doc = db[equipoSelec]
-            listaJ = []
-            #listaJ = doc["content"]["integrantes"]
-            for i in range(0,10):
-                elementoI = listaJ[i]
-                doc1 = db[elementoI]
-                fechaNac = doc1["content"]["fechaN"]
-                fechaNac = fechaNac.toPyDate()
-                fechaAct = datetime.datetime.now().date()
-                delta = fechaAct - fechaNac
-                pesoAct = doc1["content"]["peso"]
-                acumPesos += pesoAct
-                #fisico = (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
-                acumFisico += (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
-                #emocional = (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
-                acumEmo += (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
-                #intelectual = (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
-                acumIntel += (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
-            mediaF = acumFisico/acumPesos
-            mediaE = acumEmo/acumPesos
-            mediaI = acumIntel/acumPesos
-            mediaT = (mediaF+mediaE+mediaI)/3
-            return mediaT                    
-        else:
-            print("Ese equipo no existe o no tiene jugadores")
+        docJ = db[jKey]
+        pesoJ = docJ["content"]["peso"]
+        nacJ = docJ["content"]["fechaN"]
+        fechaN = datetime.strptime(nacJ, '%d/%m/%Y')
+        fechaAct = datetime.datetime.now().date()
+        delta = fechaAct - fechaN
+        #fisico = (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
+        acumFisico = (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
+        #emocional = (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
+        acumEmo = (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
+        #intelectual = (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
+        acumIntel = (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
+        mediaP = (acumFisico+acumEmo+acumIntel)/(3*peso)
+        return mediaP
 
     #Metodo que agrega los equipos al combobox en modificar
     def cargarComboModificar(self):
@@ -700,6 +683,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
             jugadorDoc = db[jugadores[i]]
             nombre = jugadorDoc["content"]["nombre"]+" "+jugadorDoc["content"]["apellido"]
             self.tableWidget_3.setItem(i , 0, QtGui.QTableWidgetItem(nombre))
+        for i in range(0,len(jugadores)):
+            docJ = db[jugadores[i]]
+            media = self.calcularBioritmos(docJ["_id"])            
+            self.tableWidget_3.setItem(i , 1, QtGui.QTableWidgetItem(round(media,2)))
         #Entrenador local
         entrenador = localDoc["entrenador"]
         entrenador = db[entrenador]
@@ -725,6 +712,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
             pArbitro = db[arbitro]
             nombreAr = pArbitro["content"]["nombre"]+" "+pArbitro["content"]["apellido"]
             self.tableWidget.setItem(arbitros.index(arbitro), 0, QtGui.QTableWidgetItem(nombreAr))
+
+    def listarTODO(self):
+        str(self.comboBox.currentText())
 
 if __name__ == "__main__":
     import sys
