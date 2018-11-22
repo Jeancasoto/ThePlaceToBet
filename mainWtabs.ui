@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="Log_in_admin">
+   <widget class="QTabWidget" name="verObjetos">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>7</number>
     </property>
     <property name="documentMode">
      <bool>false</bool>
@@ -397,7 +397,7 @@
     </widget>
     <widget class="QWidget" name="tab_club">
      <property name="enabled">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <attribute name="title">
       <string>Crear Club</string>
@@ -1593,6 +1593,116 @@
       </property>
       <property name="text">
        <string>$00.00</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Visualizar</string>
+     </attribute>
+     <widget class="QListWidget" name="listPerson">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listaEquipos">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>50</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="ListaClub">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>300</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listaTemporada">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>300</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="actualizar">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>520</y>
+        <width>97</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Actualizar</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_26">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>64</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Personas</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_27">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>20</y>
+        <width>64</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Equipos</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>270</y>
+        <width>64</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clubes</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_29">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>270</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Jornadas</string>
       </property>
      </widget>
     </widget>

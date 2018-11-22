@@ -167,7 +167,7 @@ class Ui_MainWindow(object):
         self.boton_confirmar.setObjectName(_fromUtf8("boton_confirmar"))
         self.Log_in_admin.addTab(self.tab_persona, _fromUtf8(""))
         self.tab_club = QtGui.QWidget()
-        self.tab_club.setEnabled(True)
+        self.tab_club.setEnabled(False)
         self.tab_club.setObjectName(_fromUtf8("tab_club"))
         self.label_9 = QtGui.QLabel(self.tab_club)
         self.label_9.setGeometry(QtCore.QRect(260, 10, 241, 17))
@@ -628,7 +628,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.Log_in_admin.setCurrentIndex(3)
+        self.Log_in_admin.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
