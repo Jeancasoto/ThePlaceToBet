@@ -790,6 +790,15 @@ class Ui_MainWindow(QtGui.QMainWindow):
             pass
         elif objAct == 4:
             #Listar Equipos
+            equiposDB = db.view("queries/getEquipos")
+            for equipo in equiposDB:
+                equipo = equipo.value
+                IDEquipo = equipo["_id"]
+                equipo = db.get(IDEquipo)
+                clubE = equipo["content"]["club"]
+                self.list_con_datos.addItem("Nombre: " + IDEquipo + " - Club: " + clubE + " - Integrantes: ")
+                for integrante in equipo["content"]["integrantes"]:
+                    self.list_con_datos.addItem("--- ID: " + integrante)
             pass
         elif objAct == 5:
             #Listar Clubes
