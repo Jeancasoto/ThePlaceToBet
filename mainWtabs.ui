@@ -1078,7 +1078,7 @@
      <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
-        <x>60</x>
+        <x>20</x>
         <y>180</y>
         <width>261</width>
         <height>81</height>
@@ -1113,7 +1113,7 @@
      <widget class="QTableWidget" name="tableWidget_2">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>510</x>
         <y>180</y>
         <width>181</width>
         <height>91</height>
@@ -1180,7 +1180,7 @@
      <widget class="QLabel" name="label_51">
       <property name="geometry">
        <rect>
-        <x>510</x>
+        <x>550</x>
         <y>150</y>
         <width>101</width>
         <height>21</height>
@@ -1598,8 +1598,8 @@
      <widget class="QPushButton" name="botonTemporadas">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>180</y>
+        <x>330</x>
+        <y>190</y>
         <width>97</width>
         <height>27</height>
        </rect>
@@ -1611,8 +1611,8 @@
      <widget class="QPushButton" name="botonPartidos">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>230</y>
+        <x>330</x>
+        <y>240</y>
         <width>97</width>
         <height>27</height>
        </rect>

@@ -50,6 +50,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.comboBox.currentIndexChanged.connect(self.cargarComboJornada)
         #Completar los datos de enfrentamiento en Jugar
         self.comboBox_2.currentIndexChanged.connect(self.cargarComboEnfrentamiento)
+        #Cargar los datos de arbitros, coaches y jugadores
+        self.botonPartidos.clicked.connect(self.cargarDatosPartido)
 
     #Metodo al accionar el boton de exit
     def salir(self):
@@ -678,6 +680,51 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 if enfren not in listaEnfrentamientos:
                     listaEnfrentamientos.append(enfren)
         self.comboBox_3.addItems(listaEnfrentamientos)
+
+    #Metodo para cargar los arbitros, coaches, jugadores
+    def cargarDatosPartido(self):
+        idT = str(self.comboBox.currentText())
+        idJ = str(self.comboBox_2.currentText())
+        idE = str(self.comboBox_3.currentText())
+        myKey = idT+"-"+idJ+"-"+idE
+        print(myKey)
+        serverCDB = Server()
+        db = serverCDB["quinelas"]
+        temporadas = db.view("queries/getPartidas")
+        myDoc = db[myKey]
+
+        #Recuperar los datos del local
+        localDoc = myDoc["content"]["local"]
+        jugadores = localDoc["jugadores_titulares"]
+        for i in range(0, len(jugadores)):
+            jugadorDoc = db[jugadores[i]]
+            nombre = jugadorDoc["content"]["nombre"]+" "+jugadorDoc["content"]["apellido"]
+            self.tableWidget_3.setItem(i , 0, QtGui.QTableWidgetItem(nombre))
+        #Entrenador local
+        entrenador = localDoc["entrenador"]
+        entrenador = db[entrenador]
+        nombreA = entrenador["content"]["nombre"]+" "+entrenador["content"]["apellido"]
+        self.tableWidget_2.setItem(0, 0, QtGui.QTableWidgetItem(nombreA))
+
+        #Recuperar los datos del visitante
+        visitDoc = myDoc["content"]["visita"]
+        jugadores = visitDoc["jugadores_titulares"]
+        for i in range(0, len(jugadores)):
+            jugadorDoc = db[jugadores[i]]
+            nombre = jugadorDoc["content"]["nombre"]+" "+jugadorDoc["content"]["apellido"]
+            self.tableWidget_4.setItem(i , 0, QtGui.QTableWidgetItem(nombre))
+        #Entrenador visita
+        entrenador = visitDoc["entrenador"]
+        entrenador = db[entrenador]
+        nombreA = entrenador["content"]["nombre"]+" "+entrenador["content"]["apellido"]
+        self.tableWidget_2.setItem(1, 0, QtGui.QTableWidgetItem(nombreA))
+
+        #Arbitros
+        arbitros = myDoc["content"]["arbitros"]
+        for arbitro in arbitros:
+            pArbitro = db[arbitro]
+            nombreAr = pArbitro["content"]["nombre"]+" "+pArbitro["content"]["apellido"]
+            self.tableWidget.setItem(arbitros.index(arbitro), 0, QtGui.QTableWidgetItem(nombreAr))
 
 
 
