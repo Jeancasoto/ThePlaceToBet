@@ -64,7 +64,6 @@ class Ui_MainWindow(object):
         #print(delta.days)
         bioInt = 100*math.sin((math.pi*2*delta.days)/33)
         bioInt = round(bioInt,2)setEchoMode(QtGui.QLineEdit.Password)
-        listaNombre = ["Alfonso","Carlos","Emilio","Antonio","Nicolas","Eric","Erik","Daniel","Fidel","Ferran","Alejandro","Victor","Mariano","Galvan","Fermin","Guillem","Alfredo","Inaki","Lorenzo","Gil","Dario","Nacho","Aaron","Cesar","Feliciano","Marc","Andreu","Benjamin","Jacobo","Alberto","Javier","Javi","Xavier","Xavi","Roberto","Raul","Bruno","Ramon","Gabi","Gaby","Adam","Adan","Anael","Ignacio","Manuel","Hugo","Silvestre","Gaspar","Gustavo","Gregorio","German","Federico","Angel","Ivan","Felipe","Pau","Paulo","Pao","Paolo","Vicente","Gilberto","Ismael","Beltrán","Aitor","Mauro","Jesus","Gaizka"]
         print(bioInt)
     
     def calculoIntelectual(self):
