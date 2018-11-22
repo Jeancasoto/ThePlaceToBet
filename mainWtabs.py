@@ -628,7 +628,11 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
+<<<<<<< HEAD
         self.Log_in_admin.setCurrentIndex(0)
+=======
+        self.Log_in_admin.setCurrentIndex(3)
+>>>>>>> 1fc0635419e8e9e12bc7ffcb44319ce80cb9db9f
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

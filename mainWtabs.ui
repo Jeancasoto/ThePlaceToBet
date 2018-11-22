@@ -1595,6 +1595,7 @@
        <string>$00.00</string>
       </property>
      </widget>
+<<<<<<< HEAD
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1705,6 +1706,8 @@
        <string>Jornadas</string>
       </property>
      </widget>
+=======
+>>>>>>> 1fc0635419e8e9e12bc7ffcb44319ce80cb9db9f
     </widget>
     <widget class="QWidget" name="tab_7">
      <attribute name="title">
