@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>6</number>
     </property>
     <property name="documentMode">
      <bool>false</bool>
@@ -521,6 +521,11 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Crear Temporada</string>
+     </attribute>
+    </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Pre-Partido</string>
@@ -840,6 +845,710 @@
         <width>256</width>
         <height>192</height>
        </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_8">
+     <attribute name="title">
+      <string>Modificar equipo</string>
+     </attribute>
+     <widget class="QComboBox" name="comboBox_7">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>30</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>170</y>
+        <width>291</width>
+        <height>321</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_58">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Seleccionar equipo</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_59">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>140</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Plantilla</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>500</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Eliminar</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_60">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>140</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Agentes libres</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>170</y>
+        <width>291</width>
+        <height>321</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>500</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Agregar</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Jugar</string>
+     </attribute>
+     <widget class="QComboBox" name="comboBox">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>60</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_2">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>60</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_3">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>60</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>30</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Temporada</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>30</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Jornada</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_24">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>30</y>
+        <width>121</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Enfrentamiento</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>160</y>
+        <width>221</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>Arbitro principal</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Arbitro auxiliar 1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Arbitro auxiliar 2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Arbitro de reserva</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>160</y>
+        <width>161</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>Local</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Visitante</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_49">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>110</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Informacion del partido</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_50">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>130</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Arbitros</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_51">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>130</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Entrenadores</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_52">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>270</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Local - </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_53">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>280</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Visitante -</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>300</y>
+        <width>231</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>6</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>7</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>8</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>9</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>10</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>11</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Biorritmo</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>310</y>
+        <width>231</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>6</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>7</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>8</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>9</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>10</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>11</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Biorritmo</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_54">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>380</y>
+        <width>21</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_55">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>380</y>
+        <width>21</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>-</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_56">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>380</y>
+        <width>21</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>510</y>
+        <width>100</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Local</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_2">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>510</y>
+        <width>100</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Empate</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_3">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>510</y>
+        <width>100</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Visita</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>500</y>
+        <width>231</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>JUGAR</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_7">
+     <attribute name="title">
+      <string>Salir</string>
+     </attribute>
+     <widget class="QPushButton" name="boton_salir">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>210</y>
+        <width>331</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>Imagenes/logout (1).png</normaloff>Imagenes/logout (1).png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>230</width>
+        <height>230</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_57">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>60</y>
+        <width>231</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>FreeSerif</family>
+        <pointsize>48</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>SALIR</string>
       </property>
      </widget>
     </widget>
