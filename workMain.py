@@ -28,7 +28,28 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.botonEliminarEquipo.clicked.connect(self.quitarListaEquipo)
         self.botonActualizarEqui.clicked.connect(self.actualizarEquiposClub)
         self.botonAceptar.clicked.connect(self.crearClub)
+        #Llamar metodo para salir del sistema
+        self.boton_salir.clicked.connect(self.salir)
+        #Cargar los equipos al combobox y agentes libres en Modificar
+        self.cargar_cbEquipos.clicked.connect(self.cargarComboModificar)
+        #Cargar la plantilla del equipo seleccionado en el combo Modificar
+        self.comboBox_7.currentIndexChanged.connect(self.cargarPlantillasModificar)
+        #Agregar jugadores agentes libres a Equipo seleccionado
+        self.pushButton_3.clicked.connect(self.agregarAgenteLibre)
+        #Despedir jugador y volverlo agente libre
+        self.pushButton_2.clicked.connect(self.despedirJugador)
+        #Cargar equipos a la lista de crear temporada
+        self.cargarEquiposTemp.clicked.connect(self.cargarEquiposTemporada)
+        #Agregar equipos a la temporada nueva
+        self.botonAgregarEquipo_2.clicked.connect(self.agregarEquiposTemporada)
+        #Crear temporada
+        self.botonCrearTemp.clicked.connect(self.crearTemporada)
+        
 
+    #Metodo al accionar el boton de exit
+    def salir(self):
+        sys.exit()
+        print ('Salir del sistema exitoso')
     
     def autenticar(self):
         input_username = str(self.username.text())
@@ -71,7 +92,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
                     'apellido': pApellido,
                     'fechaN': fechaN.strftime('%m/%d/%Y'),
                     'rol': rol,
-                    'peso': peso
+                    'peso': peso,
+                    'equipo': "N/A"
                 }
             }
             db.save(docPersona)
@@ -83,7 +105,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         serverCDB = Server()
         db = serverCDB['quinelas']
 
-        lists = db.view('queries/getJugadores')
+        lists = db.view('queries/getJugadoresSinEquipo')
         self.lista_jugadores_disp.clear()
         self.lista_jugadores_ag.clear()
         temporal = []
@@ -109,7 +131,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
         nEquipo = self.texto_nom_equipo.text()
         print(nEquipo)
         nClub = "N/A"
+        global jugadoresAgregados
         nJugadores = jugadoresAgregados
+        print("*******************")
+        for i in range(0,len(nJugadores)):
+            print(nJugadores[i])
+        print("********************")
         
         serverCDB = Server()
         db = serverCDB['quinelas']
@@ -124,24 +151,32 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 }
             }
             db.save(docEquipo)
+
+            for id in nJugadores:
+                jugador = db.get(id)
+                jugador["content"]["equipo"] = nEquipo
+                db.save(jugador)
+
             print("Agregado exitosamente!")
         else:
             print("Ya existe un equipo con ese ID")
-        
-
+        self.lista_jugadores_disp.clear()
+        self.lista_jugadores_ag.clear()
+        jugadoresAgregados = []
 
     def transferirJugadores(self):
-        temporal = []
+        global jugadoresAgregados
+        temporal = jugadoresAgregados
         for JugadorSelec in self.lista_jugadores_disp.selectedItems():
             #tempo = self.lista_jugadores_disp.currentItem()
             value = JugadorSelec.text()
             value = value.split("-")
-            temporal.append(value[0])
-            print(value[0])    
+            idSuazo = value[0]+"-"+value[1]+"-"+value[2]
+            temporal.append(idSuazo)
+            print(idSuazo)    
             self.lista_jugadores_disp.takeItem(self.lista_jugadores_disp.row(JugadorSelec))
             self.lista_jugadores_ag.addItem(JugadorSelec)
         #jugadoresAgregados.append(self.lista_jugadores_disp.currentRow())
-        global jugadoresAgregados
         jugadoresAgregados = temporal
         #for i in range(0, len(temporal)):
         #    print(temporal[i])         
@@ -186,7 +221,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         items = [] 
         for index in range(self.listaEquiposSel.count()): 
             items.append(str(self.listaEquiposSel.item(index).text()))
-
+        #Ejemplo de como modificar
         for EquipoSelec in items:
             #EquipoSelec = str(self.listaEquiposSel.item(cont))
             listaEquipos.append(EquipoSelec)
@@ -207,6 +242,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.listaEquiposSel.clear()
         self.listaEquiposDisp.clear()
 
+    #Metodo para calcular el bioritmo promedio para un equipo
     def calcularBioritmos(self, equipoSelec):
 
         #Este metodo calcula el bioritmo para un EQUIPO
@@ -246,9 +282,319 @@ class Ui_MainWindow(QtGui.QMainWindow):
             mediaF = acumFisico/acumPesos
             mediaE = acumEmo/acumPesos
             mediaI = acumIntel/acumPesos
-            mediaT = (mediaF+mediaE+mediaI)/3                       
+            mediaT = (mediaF+mediaE+mediaI)/3
+            return mediaT                    
         else:
             print("Ese equipo no existe o no tiene jugadores")
+
+    #Metodo que agrega los equipos al combobox en modificar
+    def cargarComboModificar(self):
+        #Limpiar las listas
+        self.listWidget_2.clear()
+        #Agregar los equipos al combobox
+        self.comboBox_7.clear()
+        serverCDB = Server()
+        db = serverCDB['quinelas']
+        equipos = db.view('queries/getEquipos')
+        listaTemporal = []
+        for equipo in equipos:
+            equipo = equipo.value
+            cbItem = equipo["_id"]
+            listaTemporal.append(cbItem)
+        self.comboBox_7.addItems(listaTemporal)
+        self.cargarAgentesLibre()
+        
+    #Metodo que carga los jugadores Agentes Libre
+    def cargarAgentesLibre(self):
+        self.listWidget_2.clear()
+        serverCDB = Server()
+        db = serverCDB['quinelas']
+        jugadores = db.view('queries/getJugadoresSinEquipo')
+        for jugador in jugadores:
+            docTemp = jugador.value
+            listRow = docTemp["_id"]+"-"+docTemp["content"]["nombre"]+"-"+docTemp["content"]["apellido"]+"-"+str(docTemp["content"]["peso"])
+            self.listWidget_2.addItem(listRow)  
+    
+    #Metodo que carga los jugadores del equipo seleccionado del cb en Modificar
+    def cargarPlantillasModificar(self):
+        self.listWidget.clear()
+        print("PLANTILLAS EQUIPOS")
+        serverCDB = Server()
+        db = serverCDB['quinelas']
+        #Agregar los jugadores del equipo seleccionado cb
+        equipoKey = str(self.comboBox_7.currentText())
+        equipo = db[equipoKey]
+        jugadores = equipo["content"]["integrantes"]
+        for jugador in jugadores:
+            actual = db[jugador]
+            listRow = actual["_id"]+"-"+actual["content"]["nombre"]+"-"+actual["content"]["apellido"]+"-"+str(actual["content"]["peso"])
+            self.listWidget.addItem(listRow)
+
+    #Metodo que agrega al equipo un jugador agente libre
+    def agregarAgenteLibre(self):
+        if(len(self.listWidget_2.selectedItems())>0):
+            listaNuevos = []
+            serverCDB = Server()
+            db = serverCDB['quinelas']
+            for jugador in self.listWidget_2.selectedItems():
+                value = jugador.text()
+                value = value.split("-")
+                idJ = value[0]+"-"+value[1]+"-"+value[2]
+                listaNuevos.append(idJ)
+                docJugador = db[idJ]
+                docJugador["content"]["equipo"] = str(self.comboBox_7.currentText())
+                db.save(docJugador)       
+                self.listWidget_2.takeItem(self.listWidget_2.row(jugador))
+            equipoKey = str(self.comboBox_7.currentText())
+            equipo = db[equipoKey]
+            plantillaAct = equipo["content"]["integrantes"]
+            plantillaAct = plantillaAct + listaNuevos
+            equipo["content"]["integrantes"] = plantillaAct
+            db.save(equipo)
+            self.cargarPlantillasModificar()
+        else:
+            print("ERROR! Debe elegir un elemento de la lista Agente Libre")
+
+    #Metodo que despide a un jugador del equipo en Modificar
+    def despedirJugador(self):
+        if(len(self.listWidget.selectedItems()) > 0):
+            serverCDB = Server()
+            db = serverCDB['quinelas']
+            equipo = db[str(self.comboBox_7.currentText())]
+            plantillaAct = equipo["content"]["integrantes"]
+            for jugador in self.listWidget.selectedItems():
+                value = jugador.text()
+                value = value.split("-")
+                idJ = value[0]+"-"+value[1]+"-"+value[2]
+                plantillaAct.remove(idJ)
+                docJ = db[idJ]
+                docJ["content"]["equipo"]="N/A"
+                db.save(docJ)
+                self.listWidget.takeItem(self.listWidget.row(jugador))
+            equipo["content"]["integrantes"] = plantillaAct
+            db.save(equipo)
+            self.cargarAgentesLibre()
+        else:
+            print("ERROR! Debe elegir un elemento de la lista Plantilla")
+        
+    def cargarEquiposTemporada(self):
+        self.equiposDisp.clear()
+        self.equiposPart.clear()
+        serverCDB = Server()
+        db = serverCDB['quinelas']
+        equipos = db.view('queries/getEquipos')
+        listaTemporal = []
+        for equipo in equipos:
+            equipo = equipo.value
+            IDEquipo = equipo["_id"]
+            listaTemporal.append(IDEquipo)
+            self.equiposDisp.addItem(IDEquipo)
+
+    def agregarEquiposTemporada(self):
+        for EquipoSelec in self.equiposDisp.selectedItems():
+            self.equiposDisp.takeItem(self.equiposDisp.row(EquipoSelec))
+            self.equiposPart.addItem(EquipoSelec)
+
+    def crearTemporada(self):
+        serverCDB = Server()
+        db = serverCDB['quinelas']
+
+        if len(self.texIntTemporada.text()) > 0:
+            anoTemp = self.texIntTemporada.text()
+            equipos = [] 
+            for index in range(self.equiposPart.count()): 
+                equipos.append(str(self.equiposPart.item(index).text()))
+
+            for id_equipo in equipos:
+                equipo = db.get(id_equipo)
+                #saca el club del equipo
+                club = db.get(equipo["content"]["club"])
+                if club == "N/A":
+                    print("ERROR! Equipo sin Club")
+                    return
+
+            docTemp = {
+                "_id": anoTemp,
+                "content":{
+                    "equipos": equipos
+                }
+            }
+
+            db.save(docTemp)
+            
+            contador_jornada =1
+
+            #existe una lista de los enfrentamientos ya disputados donde no pueden disputarse mas de 1 vez por temporada
+            #def enfrentamientos(self):  
+            lista_partidos_totales =[]
+            #cada jornada tiene 14 partidos (n-1)
+            jornada =contador_jornada
+            #existen equipos locales y visitantes 
+            for i in range(len(equipos)):
+                lista_partidos = []
+                while len(lista_partidos) <14:
+                    ran1=randint(0,len(equipos)-1)
+                    ran2=randint(0,len(equipos)-1)
+                    partido = equipos[ran1]+"-"+equipos[ran2]
+                    if partido not in lista_partidos_totales:
+                        print ("No se ha jugado en otra fecha")
+                        lista_partidos_totales.append(partido)
+                        if partido not in lista_partidos:
+                            print ("No se ha jugado esta jornada")
+                            lista_partidos.append(partido)
+                        else:
+                            print ("El partido ya se jugo en esta jornada ")
+                    else:
+                        print ('El partido ya se jugo en otra fecha aparentemente')
+                
+                print ("Jornada-> " + str(contador_jornada))
+                print ("Lista partidos:")
+                #for j in len(lista_partidos):
+                #    print 'Juego:'+j+" "+lista_partidos[j]
+                print (lista_partidos)
+
+                #Escoger Jugadores
+                for encuentro in lista_partidos:
+                    #Validacion por si dos equipos del mismo club se enfrentan
+                    listaJugadoresUsados = []
+
+                    #----------Local-------------
+
+                    id_equipo = encuentro.split("-")[0]
+                    print(id_equipo)
+                    equipo = db.get(id_equipo)
+                    #saca el club del equipo
+                    club = db.get(equipo["content"]["club"])
+                    print(equipo["content"]["club"])
+
+                    jugadores_temp = []
+
+                    #saca los equipos del club
+                    for equipoClub in club["content"]["equipos"]:
+                        equipoClub = db.get(equipoClub)
+                        #saca los integrantes de los equipos
+                        for jugadorClub in equipoClub["content"]["integrantes"]:
+                            #y lo agrega
+                            jugadores_temp.append(jugadorClub)
+
+                    #agrega los tutulares random
+                    jugadores_Titulares = []
+                    for i in range(11):
+                        jugRan = randint(0, len(jugadores_temp)-1)
+                        jugadores_Titulares.append(jugadores_temp[jugRan])
+                        listaJugadoresUsados.append(jugadores_temp[jugRan])
+                        jugadores_temp.pop(jugRan)
+
+                    #agrega los suplentes random
+                    jugadores_Suplentes = []
+                    for i in range(5):
+                        jugRan = randint(0, len(jugadores_temp)-1)
+                        jugadores_Suplentes.append(jugadores_temp[jugRan])
+                        listaJugadoresUsados.append(jugadores_temp[jugRan])
+                        jugadores_temp.pop(jugRan)
+
+                    tecnicoE = db.view("queries/getEntrenador")
+                    #tecnicoE = tecnicoE[randint(0,len(tecnicoE))]
+                    tecnicoEs = []
+                    for tec in tecnicoE:
+                        tec = tec.key
+                        tecnicoEs.append(tec)
+
+                    foo = randint(0, len(tecnicoEs) - 1)
+                    print(tecnicoEs[foo])
+                    vari = tecnicoEs[foo]
+
+                    #Crea el doc con toda la info necesaria
+                    docLocal = {
+                        "nombre": equipo["_id"],
+                        "jugadores_titulares": jugadores_Titulares,
+                        "jugadores_suplentes": jugadores_Suplentes,
+                        "entrenador": vari
+                    }
+
+                    #----------Visita---------
+
+                    id_equipo = encuentro.split("-")[1]
+                    equipo = db.get(id_equipo)
+                    #saca el club del equipo
+                    club = db.get(equipo["content"]["club"])
+
+                    jugadores_temp = []
+
+                    #saca los equipos del club
+                    for equipoClub in club["content"]["equipos"]:
+                        equipoClub = db.get(equipoClub)
+                        #saca los integrantes de los equipos
+                        for jugadorClub in equipoClub["content"]["integrantes"]:
+                            #y lo agrega
+
+                            #con la condicion extra
+                            if jugadorClub not in listaJugadoresUsados:
+                                jugadores_temp.append(jugadorClub)
+
+                    #agrega los tutulares random
+                    jugadores_Titulares = []
+                    for i in range(11):
+                        jugRan = randint(0, len(jugadores_temp)-1)
+                        jugadores_Titulares.append(jugadores_temp[jugRan])
+                        listaJugadoresUsados.append(jugadores_temp[jugRan])
+                        jugadores_temp.pop(jugRan)
+
+                    #agrega los suplentes random
+                    jugadores_Suplentes = []
+                    for i in range(5):
+                        jugRan = randint(0, len(jugadores_temp)-1)
+                        jugadores_Suplentes.append(jugadores_temp[jugRan])
+                        listaJugadoresUsados.append(jugadores_temp[jugRan])
+                        jugadores_temp.pop(jugRan)
+
+                    tecnicoE = db.view("queries/getEntrenador")
+                    #tecnicoE = tecnicoE[randint(0,len(tecnicoE))]
+                    tecnicoEs = []
+                    for tec in tecnicoE:
+                        tec = tec.key
+                        tecnicoEs.append(tec)
+
+                    foo = randint(0, len(tecnicoEs) - 1)
+                    print(tecnicoEs[foo])
+                    vari = tecnicoEs[foo]
+
+                    #Crea el doc con toda la info necesaria
+                    docVisita = {
+                        "nombre": equipo["_id"],
+                        "jugadores_titulares": jugadores_Titulares,
+                        "jugadores_suplentes": jugadores_Suplentes,
+                        "entrenador": vari
+                    }
+
+                    arbitros = []
+                    listaArbitrosV = db.view("queries/getArbitros")
+                    listaArbitros = []
+                    for arb in listaArbitrosV:
+                        listaArbitros.append(arb.key)
+
+                    for i in range(4):
+                        posArbitro = randint(0, len(listaArbitros) - 1)
+                        arbitros.append(listaArbitros[posArbitro])
+                        listaArbitros.pop(posArbitro)
+
+                    #FINALMENTE EL DOC DE PARTIDO
+
+                    docPartido = {
+                        "_id": str(anoTemp) + "-" + str(contador_jornada) + "-" + encuentro.split("-")[0] + "-" + encuentro.split("-")[1],
+                        "content":{
+                            "jornada": contador_jornada,
+                            "local": docLocal,
+                            "visita": docVisita,
+                            "arbitros": arbitros,
+                            "score_local": "N/A",
+                            "score_visita": "N/A"
+
+                        }
+                    }
+                    db.save(docPartido)
+
+                contador_jornada+=1
 
 if __name__ == "__main__":
     import sys
