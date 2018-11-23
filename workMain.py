@@ -836,7 +836,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         if (golesLocal > golesVisita and self.radioButton.isChecked()) or (golesLocal < golesVisita and self.radioButton_3.isChecked()) or (golesLocal == golesVisita and self.radioButton_2.isChecked()):
             apuesta*= 1.5
             self.labelMoney.setText(str(apuesta))
-        elif (golesLocal < golesVisita and self.radioButton.isChecked()) or (golesLocal > golesVisita and self.radioButton_3.isChecked()) or (golesLocal != golesVisita and self.radioButton_3.isChecked()):
+        elif (golesLocal <= golesVisita and self.radioButton.isChecked()) or (golesLocal >= golesVisita and self.radioButton_3.isChecked()) or (golesLocal != golesVisita and self.radioButton_3.isChecked()):
             apuesta*= 0.75
             self.labelMoney.setText(str(apuesta))
         else:
