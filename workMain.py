@@ -55,6 +55,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.botonPartidos.clicked.connect(self.cargarDatosPartido)
         #Cargar todo para visualizar :v
         self.combo_consulta.currentIndexChanged.connect(self.listarTODO)
+        #Calcular el pronostico del resultado
+        self.pushButton.clicked.connect(self.simulacionPartido)
 
     #Metodo al accionar el boton de exit
     def salir(self):
@@ -809,6 +811,18 @@ class Ui_MainWindow(QtGui.QMainWindow):
         elif objAct == 7:
             #Listar Partidos
             pass
+
+    def simulacionPartido(self):
+        acumLocal = 0
+        acumVisita = 0
+        for i in range(0,10):
+            item1 = self.tableWidget_3.itemAt(i, 1)
+            item2 = self.tableWidget_4.itemAt(i, 1)
+            acumLocal += float(item1.text())
+            acumVisita += float(item2.text())
+        mediaLocal = acumLocal/11
+        mediaVisita = acumVisita/11
+    
 
 if __name__ == "__main__":
     import sys
