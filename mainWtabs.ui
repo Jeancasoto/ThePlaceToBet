@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>0</number>
     </property>
     <property name="documentMode">
      <bool>false</bool>
@@ -522,6 +522,9 @@
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <attribute name="title">
       <string>Crear Temporada</string>
      </attribute>
@@ -699,6 +702,9 @@
      </widget>
     </widget>
     <widget class="QWidget" name="tabEquipo">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <attribute name="title">
       <string>Equipos</string>
      </attribute>
@@ -842,6 +848,9 @@
      </widget>
     </widget>
     <widget class="QWidget" name="tab_8">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <attribute name="title">
       <string>Modificar equipo</string>
      </attribute>

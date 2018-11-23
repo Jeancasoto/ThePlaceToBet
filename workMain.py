@@ -74,8 +74,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
             print ('Username encontrado')
             if  input_password == 'admin':
                 print ('Password encontrado')
-                self.verObjetos.setTabEnabled(1, True)
-                self.verObjetos.setTabEnabled(2, True)
+                #serverCDB.create("quinelas")
+                self.vistas.setTabEnabled(1, True)
+                self.vistas.setTabEnabled(2, True)
+                self.vistas.setTabEnabled(3, True)
+                self.vistas.setTabEnabled(4, True)
+                self.vistas.setTabEnabled(5, True)
             else:
                 print ('Password no encontrada')
         else:
@@ -817,7 +821,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 IDClub = club["_id"]
                 club = db.get(IDClub)
                 self.list_con_datos.addItem("ID: " + IDClub + " - Equipos: ")
-                for integrante in clubes["content"]["equipos"]:
+                for integrante in clubesDB["content"]["equipos"]:
                     self.list_con_datos.addItem("--- Equipo: " + integrante)
             pass
         elif objAct == 6:
@@ -828,10 +832,15 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 IDpartida = partida["_id"]
                 partida = db.get(IDpartida)
                 jornada = partida["content"]["jornada"]
-                self.list_con_datos.addItem("ID: " + IDpartida + " - Jornada" + str(jornada) + " - Equipos: ")
+                self.list_con_datos.addItem("ID: " + IDpartida + " - Jornada" + str(jornada) + "- Resultado: " + str(partida["content"]["score_local"]) + " - " + str(partida["content"]["score_visita"]) + " - Equipos: ")
+
+                if partida["content"]["score_local"] != "N/A":
+                    A = "A-" + IDpartida
+                    apuesta = db.get(A)
+                    self.list_con_datos.addItem("Dinero Jugado: " + str(apuesta["content"]["jugado"]) + "- Dinero ganado:" + str(apuesta["content"]["ganado"]))
+
                 self.list_con_datos.addItem("-- Local")
                 local = partida["content"]["local"]
-                self.list_con_datos.addItem("--- Entrenador: " + local["entrenador"])
                 self.list_con_datos.addItem("--- Equipo: " + local["nombre"])
                 self.list_con_datos.addItem("------ Titulares: ")
                 for titular in local["jugadores_titulares"]:
@@ -840,9 +849,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 for suplente in local["jugadores_suplentes"]:
                     self.list_con_datos.addItem("--------- ID: " + suplente)
 
-                self.list_con_datos.addItem("-- Local")
-                visit = partida["content"]["visit"]
-                self.list_con_datos.addItem("--- Entrenador: " + visit["entrenador"])
+                self.list_con_datos.addItem("-- Visita")
+                visit = partida["content"]["visita"]
                 self.list_con_datos.addItem("--- Equipo: " + visit["nombre"])
                 self.list_con_datos.addItem("------ Titulares: ")
                 for titular in visit["jugadores_titulares"]:
@@ -851,8 +859,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 for suplente in visit["jugadores_suplentes"]:
                     self.list_con_datos.addItem("--------- ID: " + suplente)
                 
-
-                equipo = db.get(nombreE)
             pass
 
     def simulacionPartido(self):
@@ -886,13 +892,22 @@ class Ui_MainWindow(QtGui.QMainWindow):
         else:
             self.labelMoney.setText(str(apuesta))
 
+        
+
         #Insertar la apuesta en la base de datos
         idT = str(self.comboBox.currentText())
         idJ = str(self.comboBox_2.currentText())
         idE = str(self.comboBox_3.currentText())
         myKey = "A-"+idT+"-"+idJ+"-"+idE
+        
         serverCDB = Server()
         db = serverCDB["quinelas"]
+
+        part = db.get(idT+"-"+idJ+"-"+idE)
+        part["content"]["score_local"] = golesLocal
+        part["content"]["score_visita"] = golesVisita
+        db.save(part)
+
         docApuesta = {
                 "_id": myKey,
                 "content": {
@@ -902,8 +917,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
                     "golesVisita": golesVisita
                 }
             }
-        db.save(docApuesta)        
-        
+        db.save(docApuesta)
 
     def radio_isSelected(self):
         if self.radioButton.isChecked():
