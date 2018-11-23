@@ -746,6 +746,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 IDPersona = persona["_id"]
                 persona = db.get(IDPersona)
                 nombreP = persona["content"]["nombre"]
+                print(nombreP)
                 apellidoP = persona["content"]["apellido"]
                 fechaP = persona["content"]["fechaN"]
                 pesoP = persona["content"]["peso"]
