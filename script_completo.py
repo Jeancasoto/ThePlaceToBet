@@ -94,10 +94,10 @@ listaApellidos = ["Martinez","Lopez","Rodriguez","Hernandez","Flores","Mejia","G
 server = Server()
 
 #Crear una database
-#db = server.create('test')
+db = server.create('theplacetobet')
 
 #Referirse a una base de datos ya existente
-db = server['quinelas']
+#db = server['theplacetobet']
 
 #Crear un documento
 
@@ -151,7 +151,7 @@ def generar_alfanumerico(num2):
                 else:
                    # print 'no hizo ni pija'
                     encontro=0
-        print ('va por la ---- '+len(lista_alfa))
+        print ('va por la ---- '+ str(len(lista_alfa)))
         #print lista_alfa
     #return lista_alfa
 

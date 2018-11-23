@@ -74,7 +74,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
             print ('Username encontrado')
             if  input_password == 'admin':
                 print ('Password encontrado')
-                #serverCDB.create("quinelas")
+                #serverCDB.create("theplacetobet")
                 self.vistas.setTabEnabled(1, True)
                 self.vistas.setTabEnabled(2, True)
                 self.vistas.setTabEnabled(3, True)
@@ -102,7 +102,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print(peso)
 
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
 
         if identidad not in db:
             docPersona = {
@@ -123,7 +123,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def listarJugadores(self):
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
 
         lists = db.view('queries/getJugadoresSinEquipo')
         self.lista_jugadores_disp.clear()
@@ -159,7 +159,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print("********************")
         
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
         
         if nEquipo not in db:
             print("entro aqui perro")
@@ -207,7 +207,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.listaEquiposDisp.clear()
 
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
 
         equiposSinClub = db.view('queries/getEquiposSinClub')
 
@@ -240,7 +240,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print("CREAR CLUB")
 
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
 
         idClub = "1" + str(randint(0,9)) + str(randint(0,9)) + str(randint(0,9)) + str(randint(0,9)) + str(randint(0,9))
 
@@ -280,7 +280,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
         print("CALCULAR BIORITMOS")
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
         docJ = db[jKey]
         pesoAct = float(docJ["content"]["peso"])
         #print("pesoAct: "+str(pesoAct))
@@ -309,7 +309,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         #Agregar los equipos al combobox
         self.comboBox_7.clear()
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
         equipos = db.view('queries/getEquipos')
         listaTemporal = []
         for equipo in equipos:
@@ -323,7 +323,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def cargarAgentesLibre(self):
         self.listWidget_2.clear()
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
         jugadores = db.view('queries/getJugadoresSinEquipo')
         for jugador in jugadores:
             docTemp = jugador.value
@@ -335,7 +335,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.listWidget.clear()
         print("PLANTILLAS EQUIPOS")
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
         #Agregar los jugadores del equipo seleccionado cb
         equipoKey = str(self.comboBox_7.currentText())
         equipo = db[equipoKey]
@@ -350,7 +350,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         if(len(self.listWidget_2.selectedItems())>0):
             listaNuevos = []
             serverCDB = Server()
-            db = serverCDB['quinelas']
+            db = serverCDB['theplacetobet']
             for jugador in self.listWidget_2.selectedItems():
                 value = jugador.text()
                 value = value.split("-")
@@ -374,7 +374,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def despedirJugador(self):
         if(len(self.listWidget.selectedItems()) > 0):
             serverCDB = Server()
-            db = serverCDB['quinelas']
+            db = serverCDB['theplacetobet']
             equipo = db[str(self.comboBox_7.currentText())]
             plantillaAct = equipo["content"]["integrantes"]
             for jugador in self.listWidget.selectedItems():
@@ -396,7 +396,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.equiposDisp.clear()
         self.equiposPart.clear()
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
         equipos = db.view('queries/getEquipos')
         listaTemporal = []
         for equipo in equipos:
@@ -412,7 +412,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def crearTemporada(self):
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
 
         if len(self.texIntTemporada.text()) > 0:
             anoTemp = self.texIntTemporada.text()
@@ -615,7 +615,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def cargarComboTemporadas(self):
         self.comboBox.clear()
         serverCDB = Server()
-        db = serverCDB['quinelas']
+        db = serverCDB['theplacetobet']
         temporadas = db.view('queries/getPartidas')
         listaYrs = []
         for temporada in temporadas:
@@ -632,7 +632,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         #print("HOLAAAAAAAAAAA")
         self.comboBox_2.clear()
         serverCDB = Server()
-        db = serverCDB["quinelas"]
+        db = serverCDB["theplacetobet"]
         temporadas = db.view("queries/getPartidas")
         itemActual = str(self.comboBox.currentText())
         listaJornadas = []
@@ -663,7 +663,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def cargarComboEnfrentamiento(self):
         self.comboBox_3.clear()
         serverCDB = Server()
-        db = serverCDB["quinelas"]
+        db = serverCDB["theplacetobet"]
         temporadas = db.view("queries/getPartidas")
         jornadaActual = str(self.comboBox_2.currentText())
         temporadaActual = str(self.comboBox.currentText())
@@ -690,7 +690,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         myKey = idT+"-"+idJ+"-"+idE
         #print(myKey)
         serverCDB = Server()
-        db = serverCDB["quinelas"]
+        db = serverCDB["theplacetobet"]
         temporadas = db.view("queries/getPartidas")
         myDoc = db[myKey]
 
@@ -743,7 +743,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.list_con_datos.clear()
 
         serverCDB = Server()
-        db = serverCDB["quinelas"]
+        db = serverCDB["theplacetobet"]
 
         #Toma la seleccion actual
         objAct = self.combo_consulta.currentIndex()
@@ -901,7 +901,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         myKey = "A-"+idT+"-"+idJ+"-"+idE
         
         serverCDB = Server()
-        db = serverCDB["quinelas"]
+        db = serverCDB["theplacetobet"]
 
         part = db.get(idT+"-"+idJ+"-"+idE)
         part["content"]["score_local"] = golesLocal
