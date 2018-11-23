@@ -32,14 +32,14 @@ def fechas_nacimiento(num):
 
         while len(lista_fechas_nac)<num:
 
-                for i in range(num):
-                        print (('va por la -->') + str(len(lista_fechas_nac)))
+            for i in range(num):
+                    print ('va por la -->'), len(lista_fechas_nac)
 
-                        no_fecha_nac= str(randint(1,31))+"/"+str(randint(1,12))+"/"+str(randint(1940,2000))
-                        print (str(no_fecha_nac))
-                        lista_fechas_nac.append(no_fecha_nac)
-                        print('fecha agregada exitosamente')
-                     
+                    no_fecha_nac= str(randint(1,31))+"/"+str(randint(1,12))+"/"+str(randint(1940,2000))
+                    print (str(no_fecha_nac))
+                    lista_fechas_nac.append(no_fecha_nac)
+                    print('fecha agregada exitosamente')
+                    
         return lista_fechas_nac
 
 def definir_personas(num):
@@ -50,7 +50,7 @@ def definir_personas(num):
         while len(lista_personas)<num:
 
                 for i in range(num):
-                        print (('va por la -->') + str(len(lista_personas)))
+                        print ('va por la -->'), len(lista_personas)
 
                         seleccionar= randint(0,10)
                         if (seleccionar<2):
@@ -71,10 +71,10 @@ def definir_personas(num):
 
         
         print('tipos de personas agregadas exitosamente')
-        print('Jugadores-->' + str(jugadores))
-        print('Entrenadores-->' + str(entrenadores))
-        print('Arbitros-->' + str(arbitros))
-        print('total-->' + str(jugadores+entrenadores+arbitros))
+        print('Jugadores-->',jugadores)
+        print('Entrenadores-->',entrenadores)
+        print('Arbitros-->',arbitros)
+        print('total-->',jugadores+entrenadores+arbitros)
 
                      
         return lista_personas
@@ -108,7 +108,7 @@ for i in range(num):
         #'_rev': '1-0000000001',
         'content': {
                 'nombre': listaNombres[randint(0,len(listaNombres)-1)],
-                'apelido': listaApellidos[randint(0,len(listaApellidos)-1)],
+                'apellido': listaApellidos[randint(0,len(listaApellidos)-1)],
                 'fechaN': fechas_nac[i],
                 'rol': tipos_personas[i],
                 'peso':str(randint(1, 100)/100.00),
@@ -151,7 +151,7 @@ def generar_alfanumerico(num2):
                 else:
                    # print 'no hizo ni pija'
                     encontro=0
-        print ('va por la ---- '+str(len(lista_alfa)))
+        print ('va por la ---- '+len(lista_alfa))
         #print lista_alfa
     #return lista_alfa
 
