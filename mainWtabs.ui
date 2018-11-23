@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>6</number>
     </property>
     <property name="documentMode">
      <bool>false</bool>
@@ -1393,7 +1393,7 @@
      <widget class="QLabel" name="label_54">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>310</x>
         <y>380</y>
         <width>21</width>
         <height>31</height>
@@ -1435,7 +1435,7 @@
      <widget class="QLabel" name="label_56">
       <property name="geometry">
        <rect>
-        <x>400</x>
+        <x>380</x>
         <y>380</y>
         <width>21</width>
         <height>31</height>
@@ -1508,14 +1508,14 @@
      <widget class="QLabel" name="label_25">
       <property name="geometry">
        <rect>
-        <x>570</x>
+        <x>560</x>
         <y>10</y>
-        <width>111</width>
+        <width>121</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>Balance Actual:</string>
+       <string>Balance Actual: $</string>
       </property>
      </widget>
      <widget class="QLabel" name="labelMoney">
@@ -1592,7 +1592,7 @@
        </palette>
       </property>
       <property name="text">
-       <string>$00.00</string>
+       <string>100.00</string>
       </property>
      </widget>
      <widget class="QPushButton" name="botonTemporadas">
@@ -1693,11 +1693,6 @@
       <item>
        <property name="text">
         <string>Clubes</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Jornadas</string>
        </property>
       </item>
       <item>

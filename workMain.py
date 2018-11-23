@@ -279,7 +279,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         db = serverCDB['quinelas']
         docJ = db[jKey]
         pesoAct = float(docJ["content"]["peso"])
-        print("pesoAct: "+str(pesoAct))
+        #print("pesoAct: "+str(pesoAct))
         nacJ = docJ["content"]["fechaN"]
         fechaN = datetime.datetime.strptime(nacJ, '%d/%m/%Y')
         fechaAct = datetime.date.today().strftime("%d/%m/%Y")
@@ -287,15 +287,15 @@ class Ui_MainWindow(QtGui.QMainWindow):
         delta = fechaAct - fechaN
         #fisico = (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
         acumFisico = (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
-        print("acumFisico: "+str(acumFisico))
+        #print("acumFisico: "+str(acumFisico))
         #emocional = (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
         acumEmo = (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
-        print("acumEmo: "+str(acumEmo))
+        #print("acumEmo: "+str(acumEmo))
         #intelectual = (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
         acumIntel = (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
-        print("acumIntel: "+str(acumIntel))
+        #print("acumIntel: "+str(acumIntel))
         mediaP = (acumFisico+acumEmo+acumIntel)/(3*pesoAct)
-        print("mediaP: "+str(mediaP))
+        #print("mediaP: "+str(mediaP))
         return mediaP
 
     #Metodo que agrega los equipos al combobox en modificar
@@ -678,11 +678,13 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     #Metodo para cargar los arbitros, coaches, jugadores
     def cargarDatosPartido(self):
+        self.label_54.setText("0")
+        self.label_56.setText("0")                
         idT = str(self.comboBox.currentText())
         idJ = str(self.comboBox_2.currentText())
         idE = str(self.comboBox_3.currentText())
         myKey = idT+"-"+idJ+"-"+idE
-        print(myKey)
+        #print(myKey)
         serverCDB = Server()
         db = serverCDB["quinelas"]
         temporadas = db.view("queries/getPartidas")
@@ -809,31 +811,72 @@ class Ui_MainWindow(QtGui.QMainWindow):
             pass
         elif objAct == 5:
             #Listar Clubes
+            clubesDB = db.view("queries/getClubs")
+            for club in clubesDB:
+                club = club.value
+                IDClub = club["_id"]
+                club = db.get(IDClub)
+                self.list_con_datos.addItem("ID: " + IDClub + " - Equipos: ")
+                for integrante in clubes["content"]["equipos"]:
+                    self.list_con_datos.addItem("--- Equipo: " + integrante)
             pass
         elif objAct == 6:
-            #Listar Jornadas
-            pass
-        elif objAct == 7:
             #Listar Partidos
+            Partida = db.view("queries/getPartidas")
+            for partida in Partida:
+                partida = partida.value
+                IDpartida = partida["_id"]
+                partida = db.get(IDpartida)
+                jornada = partida["content"]["jornada"]
+                self.list_con_datos.addItem("ID: " + IDpartida + " - Jornada" + str(jornada) + " - Equipos: ")
+                self.list_con_datos.addItem("-- Local")
+                local = partida["content"]["local"]
+                self.list_con_datos.addItem("--- Entrenador: " + local["entrenador"])
+                self.list_con_datos.addItem("--- Equipo: " + local["nombre"])
+                self.list_con_datos.addItem("------ Titulares: ")
+                for titular in local["jugadores_titulares"]:
+                    self.list_con_datos.addItem("--------- ID: " + titular)
+                self.list_con_datos.addItem("------ Suplentes: ")
+                for suplente in local["jugadores_suplentes"]:
+                    self.list_con_datos.addItem("--------- ID: " + suplente)
+
+                self.list_con_datos.addItem("-- Local")
+                visit = partida["content"]["visit"]
+                self.list_con_datos.addItem("--- Entrenador: " + visit["entrenador"])
+                self.list_con_datos.addItem("--- Equipo: " + visit["nombre"])
+                self.list_con_datos.addItem("------ Titulares: ")
+                for titular in visit["jugadores_titulares"]:
+                    self.list_con_datos.addItem("--------- ID: " + titular)
+                self.list_con_datos.addItem("------ Suplentes: ")
+                for suplente in visit["jugadores_suplentes"]:
+                    self.list_con_datos.addItem("--------- ID: " + suplente)
+                
+
+                equipo = db.get(nombreE)
             pass
 
     def simulacionPartido(self):
         acumLocal = 0
         acumVisita = 0
         for i in range(0,10):
-            item1 = self.tableWidget_3.itemAt(i, 1)
-            item2 = self.tableWidget_4.itemAt(i, 1)
+            item1 = self.tableWidget_3.item(i, 1)
+            item2 = self.tableWidget_4.item(i, 1)
             acumLocal += float(item1.text())
             acumVisita += float(item2.text())
         mediaLocal = acumLocal/11
         mediaVisita = acumVisita/11
         golesLocal = int(round(mediaLocal/5))
-        print("Local: "+golesLocal)
+        if golesLocal < 0:
+            golesLocal = 0
+        print("Local: "+str(golesLocal))
         golesVisita = int(round(mediaVisita/5))
-        print("Visita: "+golesVisita)
+        if golesVisita < 0:
+            golesVisita = 0
+        print("Visita: "+str(golesVisita))
         self.label_54.setText(str(golesLocal))
         self.label_56.setText(str(golesVisita))
-        apuesta = float(self.labelMoney.getText())
+        jugado = float(self.labelMoney.text())
+        apuesta = float(self.labelMoney.text())
         if (golesLocal > golesVisita and self.radioButton.isChecked()) or (golesLocal < golesVisita and self.radioButton_3.isChecked()) or (golesLocal == golesVisita and self.radioButton_2.isChecked()):
             apuesta*= 1.5
             self.labelMoney.setText(str(apuesta))
@@ -842,6 +885,25 @@ class Ui_MainWindow(QtGui.QMainWindow):
             self.labelMoney.setText(str(apuesta))
         else:
             self.labelMoney.setText(str(apuesta))
+
+        #Insertar la apuesta en la base de datos
+        idT = str(self.comboBox.currentText())
+        idJ = str(self.comboBox_2.currentText())
+        idE = str(self.comboBox_3.currentText())
+        myKey = "A-"+idT+"-"+idJ+"-"+idE
+        serverCDB = Server()
+        db = serverCDB["quinelas"]
+        docApuesta = {
+                "_id": myKey,
+                "content": {
+                    "jugado": jugado,
+                    "ganado": apuesta,
+                    "golesLocal": golesLocal,
+                    "golesVisita": golesVisita
+                }
+            }
+        db.save(docApuesta)        
+        
 
     def radio_isSelected(self):
         if self.radioButton.isChecked():

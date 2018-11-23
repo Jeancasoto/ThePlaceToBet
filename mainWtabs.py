@@ -575,7 +575,7 @@ class Ui_MainWindow(object):
         self.pushButton.setGeometry(QtCore.QRect(460, 500, 231, 31))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         self.label_25 = QtGui.QLabel(self.tab_3)
-        self.label_25.setGeometry(QtCore.QRect(570, 10, 111, 20))
+        self.label_25.setGeometry(QtCore.QRect(560, 10, 121, 20))
         self.label_25.setObjectName(_fromUtf8("label_25"))
         self.labelMoney = QtGui.QLabel(self.tab_3)
         self.labelMoney.setGeometry(QtCore.QRect(690, 10, 64, 17))
@@ -659,7 +659,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.vistas.setCurrentIndex(0)
+        self.vistas.setCurrentIndex(6)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -794,8 +794,8 @@ class Ui_MainWindow(object):
         self.radioButton_2.setText(_translate("MainWindow", "Empate", None))
         self.radioButton_3.setText(_translate("MainWindow", "Visita", None))
         self.pushButton.setText(_translate("MainWindow", "JUGAR", None))
-        self.label_25.setText(_translate("MainWindow", "Balance Actual:", None))
-        self.labelMoney.setText(_translate("MainWindow", "$00.00", None))
+        self.label_25.setText(_translate("MainWindow", "Balance Actual: $", None))
+        self.labelMoney.setText(_translate("MainWindow", "100.00", None))
         self.botonTemporadas.setText(_translate("MainWindow", "Cargar T", None))
         self.botonPartidos.setText(_translate("MainWindow", "Cargar P", None))
         self.vistas.setTabText(self.vistas.indexOf(self.tab_3), _translate("MainWindow", "Jugar", None))
