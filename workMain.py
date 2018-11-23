@@ -55,6 +55,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.botonPartidos.clicked.connect(self.cargarDatosPartido)
         #Cargar todo para visualizar :v
         self.combo_consulta.currentIndexChanged.connect(self.listarTODO)
+        #Calcular el pronostico del resultado
+        self.pushButton.clicked.connect(self.simulacionPartido)
+        #Comandos para simular un group button :v
+        self.radioButton.toggled.connect(self.radio_isSelected)
+        self.radioButton_2.toggled.connect(self.radio_isSelected)
+        self.radioButton_3.toggled.connect(self.radio_isSelected)
 
     #Metodo al accionar el boton de exit
     def salir(self):
@@ -810,6 +816,45 @@ class Ui_MainWindow(QtGui.QMainWindow):
         elif objAct == 7:
             #Listar Partidos
             pass
+
+    def simulacionPartido(self):
+        acumLocal = 0
+        acumVisita = 0
+        for i in range(0,10):
+            item1 = self.tableWidget_3.itemAt(i, 1)
+            item2 = self.tableWidget_4.itemAt(i, 1)
+            acumLocal += float(item1.text())
+            acumVisita += float(item2.text())
+        mediaLocal = acumLocal/11
+        mediaVisita = acumVisita/11
+        golesLocal = int(round(mediaLocal/5))
+        print("Local: "+golesLocal)
+        golesVisita = int(round(mediaVisita/5))
+        print("Visita: "+golesVisita)
+        self.label_54.setText(str(golesLocal))
+        self.label_56.setText(str(golesVisita))
+        apuesta = float(self.labelMoney.getText())
+        if (golesLocal > golesVisita and self.radioButton.isChecked()) or (golesLocal < golesVisita and self.radioButton_3.isChecked()) or (golesLocal == golesVisita and self.radioButton_2.isChecked()):
+            apuesta*= 1.5
+            self.labelMoney.setText(str(apuesta))
+        elif (golesLocal <= golesVisita and self.radioButton.isChecked()) or (golesLocal >= golesVisita and self.radioButton_3.isChecked()) or (golesLocal != golesVisita and self.radioButton_3.isChecked()):
+            apuesta*= 0.75
+            self.labelMoney.setText(str(apuesta))
+        else:
+            self.labelMoney.setText(str(apuesta))
+
+    def radio_isSelected(self):
+        if self.radioButton.isChecked():
+            self.radioButton_2.setChecked(False)
+            self.radioButton_3.setChecked(False)
+        elif self.radioButton_2.isChecked():
+            self.radioButton.setChecked(False)
+            self.radioButton_3.setChecked(False)
+        elif self.radioButton_3.isChecked():
+            self.radioButton_2.setChecked(False)
+            self.radioButton.setChecked(False)
+
+    
 
 if __name__ == "__main__":
     import sys

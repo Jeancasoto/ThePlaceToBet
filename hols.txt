@@ -1,0 +1,31 @@
+"""
+        acumPesos = 0
+        acumFisico = 0
+        acumEmo = 0
+        acumIntel = 0
+        doc = db[equipoSelec]
+           listaJ = []
+           #listaJ = doc["content"]["integrantes"]
+           for i in range(0,10):
+               elementoI = listaJ[i]
+               doc1 = db[elementoI]
+               fechaNac = doc1["content"]["fechaN"]
+               fechaNac = fechaNac.toPyDate()
+               fechaAct = datetime.datetime.now().date()
+               delta = fechaAct - fechaNac
+               pesoAct = doc1["content"]["peso"]
+               acumPesos += pesoAct
+               #fisico = (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
+               acumFisico += (100*math.sin((math.pi*2*delta.days)/23))*pesoAct
+               #emocional = (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
+               acumEmo += (100*math.sin((math.pi*2*delta.days)/28))*pesoAct
+               #intelectual = (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
+               acumIntel += (100*math.sin((math.pi*2*delta.days)/33))*pesoAct
+            mediaF = acumFisico/acumPesos
+            mediaE = acumEmo/acumPesos
+            mediaI = acumIntel/acumPesos
+            mediaT = (mediaF+mediaE+mediaI)/3
+            return mediaT                    
+        else:
+            print("Ese equipo no existe o no tiene jugadores")
+"""
