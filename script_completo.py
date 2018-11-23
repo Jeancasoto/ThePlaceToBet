@@ -131,13 +131,13 @@ def generar_alfanumerico(num2):
     lista_numeros = ["0","1","2","3","4","5","6","7","8","9"]
     #lista_alfa = list()
     while len(lista_alfa)<num2:
-        print 'va por la ---- ', len(lista_alfa)
+        print ('va por la ---- ', len(lista_alfa))
         encontro = int 
         encontro =0
         for i in range(num2):
             cadena = lista_abecedario[randint(0,len(lista_abecedario)-1)] + lista_numeros[randint(0,len(lista_numeros)-1) ] + lista_abecedario[randint(0,len(lista_abecedario)-1)] +  lista_numeros[randint(0,len(lista_numeros)-1) ] + lista_abecedario[randint(0,len(lista_abecedario)-1)] +  lista_numeros[randint(0,len(lista_numeros)-1) ]
             if(len(lista_alfa)==0):
-                print 'estaba vacia'
+                print ('estaba vacia')
                 lista_alfa.append(cadena)
             else:
                 #for m in range (len(lista_alfa)):
@@ -151,7 +151,7 @@ def generar_alfanumerico(num2):
                 else:
                    # print 'no hizo ni pija'
                     encontro=0
-        print 'va por la ---- ', len(lista_alfa)
+        print ('va por la ---- '+len(lista_alfa))
         #print lista_alfa
     #return lista_alfa
 
@@ -206,7 +206,7 @@ while contador_global <num3 :
                 lista_jugadores_disp.append(selected_id['_id'])
                 print('Hizo apend')
             else:
-                print 'Tiene equipo ya'
+                print ('Tiene equipo ya')
 
         print ('jugadores sin equipo '+ str(len(lista_jugadores_disp)) )
 
