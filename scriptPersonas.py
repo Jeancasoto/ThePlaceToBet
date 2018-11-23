@@ -108,7 +108,7 @@ for i in range(num):
         #'_rev': '1-0000000001',
         'content': {
                 'nombre': listaNombres[randint(0,len(listaNombres)-1)],
-                'apellido': listaApellidos[randint(0,len(listaApellidos)-1)],
+                'apelido': listaApellidos[randint(0,len(listaApellidos)-1)],
                 'fechaN': fechas_nac[i],
                 'rol': tipos_personas[i],
                 'peso':str(randint(1, 100)/100.00),
