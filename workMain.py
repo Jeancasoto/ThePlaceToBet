@@ -612,7 +612,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
                 contador_jornada+=1
 
-    """#Metodo para cargar los años de las temporadas en el combo en Jugar"""
+    """#Metodo para cargar los yrs de las temporadas en el combo en Jugar"""
     def cargarComboTemporadas(self):
         self.comboBox.clear()
         serverCDB = Server()
@@ -725,9 +725,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
             pArbitro = db[arbitro]
             nombreAr = pArbitro["content"]["nombre"]+" "+pArbitro["content"]["apellido"]
             self.tableWidget.setItem(arbitros.index(arbitro), 0, QtGui.QTableWidgetItem(nombreAr))
-
-
-
 
 if __name__ == "__main__":
     import sys
